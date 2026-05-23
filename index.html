@@ -513,6 +513,31 @@
 
       /* アラートボタン */
       .alert-item .btn{width:100%;justify-content:center;}
+
+      /* ── ROIページ モバイル対応 ── */
+      .roi-main-grid{grid-template-columns:1fr !important;}
+      .roi-kpi-grid{grid-template-columns:1fr 1fr !important;}
+
+      /* ROI入力：スライダーを大きく・操作しやすく */
+      #view-roi input[type="range"]{height:6px;cursor:pointer;}
+      #view-roi .fg{padding-bottom:4px;}
+      #view-roi .fg-lbl{font-size:12px;}
+      #view-roi .f-inp{font-size:15px;padding:9px 12px;}
+      #view-roi .card-b{padding:14px 16px;}
+
+      /* ROI結果カード：テキストサイズ調整 */
+      .roi-kpi-grid .card{padding:12px 10px !important;}
+      .roi-kpi-grid #roi-r-time,
+      .roi-kpi-grid #roi-r-cost,
+      .roi-kpi-grid #roi-r-payback,
+      .roi-kpi-grid #roi-r-roi{font-size:22px !important;}
+
+      /* 通知パネル：画面幅に収める */
+      .notif-panel{width:calc(100vw - 24px);right:-50px;max-width:340px;}
+
+      /* ROIページの提案書出力ボタン：フル幅に */
+      #view-roi .pg-head{flex-direction:column;align-items:flex-start;gap:10px;}
+      #view-roi .pg-head .btn{width:100%;justify-content:center;}
     }
 
     /* ── 小型スマートフォン ── */
@@ -2122,7 +2147,7 @@
           <button class="btn btn-primary" onclick="exportRoiPdf()"><i class="fas fa-file-pdf"></i> 提案書を出力</button>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+        <div class="roi-main-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
 
           <!-- 入力エリア -->
           <div>
@@ -2199,7 +2224,7 @@
           <div style="display:flex;flex-direction:column;gap:16px">
 
             <!-- KPIカード4枚 -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="roi-kpi-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
               <div class="card" style="text-align:center;border-top:3px solid var(--success);padding:16px">
                 <div style="font-size:11px;color:var(--txt-2);margin-bottom:6px;font-weight:600">年間削減工数</div>
                 <div id="roi-r-time" style="font-size:30px;font-weight:800;color:var(--success);line-height:1.1">—</div>
@@ -3706,6 +3731,7 @@ function exportRoiPdf() {
 
 // ══ INIT ══
 renderDashSteps(3);
+calcRoi();
 </script>
 
 <!-- 名刺拡大モーダル -->
