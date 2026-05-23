@@ -462,6 +462,14 @@
       .h-div{display:none;}
       .logout-btn span{display:none;}
       .logout-btn{padding:6px 10px;}
+      /* ロゴ：1行に収める */
+      .h-logo{font-size:16px;letter-spacing:1px;white-space:nowrap;}
+      /* ロールバッジ：コンパクトに */
+      .h-role{padding:4px 8px;font-size:10px;max-width:90px;gap:5px;}
+      .h-role .dot{width:6px;height:6px;flex-shrink:0;}
+      .h-role span:not(.dot){overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+      /* ヘッダー全体の隙間を詰める */
+      .header{padding:0 12px;gap:8px;}
 
       /* サイドバー：ドロワー化 */
       .sidebar{
@@ -513,6 +521,14 @@
 
       /* アラートボタン */
       .alert-item .btn{width:100%;justify-content:center;}
+
+      /* 部署別コスト分析：構成比バーを非表示（テーブルが狭いため） */
+      #view-exec .card-b table th:last-child,
+      #view-exec .card-b table td:last-child{display:none;}
+
+      /* 統計カードの数値サイズ */
+      .stat-val{font-size:24px;}
+      .stats-grid{gap:10px;}
 
       /* ── ROIページ モバイル対応 ── */
       .roi-main-grid{grid-template-columns:1fr !important;}
