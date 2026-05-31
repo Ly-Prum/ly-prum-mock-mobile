@@ -1,7 +1,7 @@
 cat > README.md << 'EOF'
 # Ly-Prum モバイルデモ
 
-Ly-Prum 営業用 **スマートフォンデモ版**
+Ly-Prum 営業用 **ログイン画面スマホデモ版**
 
 ## 📱 デモページ
 https://ly-prum.github.io/ly-prum-mock-mobile/
