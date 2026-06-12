@@ -766,6 +766,11 @@
     /* インライングリッドを全て1列に */
     [style*="grid-template-columns:1fr 330px"],[style*="grid-template-columns: 1fr 330px"]{grid-template-columns:1fr!important;}
 
+    /* ── 横スクロール防止 ── */
+    body{overflow-x:hidden;}
+    .view table{min-width:0!important;width:100%!important;}
+    .tbl-wrap{overflow-x:auto!important;}
+
     /* ── PCブラウザで開いたとき：アプリを430px幅に制限 ── */
     @media(min-width:600px){
       body{background:#e8ecf0;}
