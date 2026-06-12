@@ -768,8 +768,6 @@
 
     /* ── 横スクロール防止 ── */
     html,body{overflow-x:hidden;max-width:100vw;touch-action:pan-y;}
-    *{max-width:100%;box-sizing:border-box;}
-    img,table{max-width:none;}
     .tbl-wrap{overflow-x:auto!important;touch-action:pan-x pan-y;}
     .card-b{overflow-x:auto!important;touch-action:pan-x pan-y;}
     .content{overflow-x:hidden!important;}
@@ -861,9 +859,9 @@
     </div>
 
     <div class="lg-feats">
-      <div class="lg-feat"><i class="fas fa-magic"></i><span><strong>社員番号ひとつ</strong>で氏名・部署・住所を自動入力。手打ちミスゼロ。</span></div>
-      <div class="lg-feat"><i class="fas fa-route"></i><span><strong>5ステップ承認フロー</strong>で抜け漏れを防止。どこで止まっているか一目瞭然。</span></div>
-      <div class="lg-feat"><i class="fas fa-eye"></i><span><strong>リアルタイム名刺プレビュー</strong>で確認・承認まで完結。印刷前に安心校了。</span></div>
+      <div class="lg-feat"><i class="fas fa-magic"></i><span><strong>社員番号ひとつ</strong>で氏名・部署・住所を自動入力。<br>手打ちミスゼロ。</span></div>
+      <div class="lg-feat"><i class="fas fa-route"></i><span><strong>5ステップ承認フロー</strong>で抜け漏れを防止。<br>どこで止まっているか一目瞭然。</span></div>
+      <div class="lg-feat"><i class="fas fa-eye"></i><span><strong>リアルタイム名刺プレビュー</strong>で確認・承認まで完結。<br>印刷前に安心校了。</span></div>
     </div>
 
     <div class="lg-role-header">ワンクリックでデモを開始</div>
@@ -1014,7 +1012,7 @@
     <div class="modal-b">
       <div id="fpStep1">
         <p style="font-size:13px;color:var(--txt-2);margin-bottom:16px;line-height:1.7">
-          登録済みのメールアドレスを入力してください。<br>パスワードリセット用のリンクをお送りします。
+          登録済みのメールアドレスを入力してください。<br>パスワードリセット用のリンクをお送りします。<br>
         </p>
         <div class="fg" style="margin-bottom:14px">
           <label class="fg-lbl">メールアドレス</label>
@@ -1085,7 +1083,7 @@
     <i class="fas fa-map-marked-alt dg-icon"></i>
     <div class="dg-text">
       <div class="dg-label">Demo Guide — 今の画面のポイント</div>
-      <div id="demoGuideMsg">ダッシュボードで今月の発注状況を確認。<strong>「対応する」ボタン</strong>で案件詳細へ直接遷移できます。</div>
+      <div id="demoGuideMsg">ダッシュボードで今月の発注状況を確認。<br><strong>「対応する」ボタン</strong>で案件詳細へ直接遷移できます。</div>
     </div>
     <button class="dg-close" onclick="document.getElementById('demoGuide').style.display='none'" title="ガイドを閉じる"><i class="fas fa-times"></i></button>
   </div>
@@ -1410,7 +1408,7 @@
         <div class="value-callout">
           <i class="fas fa-magic"></i>
           <div class="value-callout-text">
-            <strong>社員番号を入力するだけで自動入力。</strong>氏名・部署・役職・住所がマスタから瞬時に反映されます。手入力ミスや二重登録はもう起きません。
+            <strong>社員番号を入力するだけで自動入力。</strong>氏名・部署・役職・住所がマスタから瞬時に反映されます。<br>手入力ミスや二重登録はもう起きません。<br>
           </div>
         </div>
 
@@ -1549,7 +1547,7 @@
                 <div style="margin-top:10px;background:var(--bg);border-radius:var(--r-sm);padding:10px 13px">
                   <div style="font-size:11px;color:var(--txt-2);line-height:1.6">
                     <i class="fas fa-info-circle" style="color:var(--primary)"></i>
-                    入力内容がリアルタイムで反映されます。裏面（英語版）は制作チームが作成します。
+                    入力内容がリアルタイムで反映されます。<br>裏面（英語版）は制作チームが作成します。<br>
                   </div>
                 </div>
               </div>
@@ -1675,7 +1673,7 @@
             <div style="font-size:14px;opacity:.88;line-height:1.9;max-width:580px;margin-bottom:28px">
               Ly-Prumは<strong>開発会社ではありません。</strong><br>
               「何を作るべきか」「導入でどう変わるか」を最速で可視化する、<strong>上流工程の伴走パートナー</strong>です。<br>
-              この画面自体が、Ly-Prumのアウトプット実例です。
+              この画面自体が、Ly-Prumのアウトプット実例です。<br>
             </div>
             <div style="display:flex;gap:16px;flex-wrap:wrap">
               <div style="background:rgba(255,255,255,.15);border-radius:var(--r);padding:18px 24px;text-align:center;backdrop-filter:blur(8px)">
@@ -1702,9 +1700,9 @@
           <div style="display:flex;align-items:flex-start;gap:28px;padding:28px 28px 24px">
             <div style="flex:1;min-width:0">
               <div style="font-size:10px;font-weight:800;letter-spacing:2.5px;color:var(--primary);margin-bottom:12px;text-transform:uppercase">What is Ly-Prum?</div>
-              <div style="font-size:20px;font-weight:900;color:var(--txt-1);margin-bottom:16px;line-height:1.5">開発の前に、「何を作るか」を<br>明確にする。それがLy-Prumです。</div>
+              <div style="font-size:20px;font-weight:900;color:var(--txt-1);margin-bottom:16px;line-height:1.5">開発の前に、「何を作るか」を<br>明確にする。<br>それがLy-Prumです。</div>
               <div style="font-size:13.5px;color:var(--txt-2);line-height:2;margin-bottom:22px">
-                多くのDXプロジェクトが失敗する理由は、<strong style="color:var(--danger)">「要件が曖昧なまま開発が始まる」</strong>ことにあります。Ly-Prumは業務の課題を整理し、関係者が共通のビジョンを持てるよう<strong>動くモック・ビフォーアフター比較・ROI試算</strong>で見える化します。PMO経験 × AI活用により、従来なら数週間かかる提案を数日で完成させます。
+                多くのDXプロジェクトが失敗する理由は、<strong style="color:var(--danger)">「要件が曖昧なまま開発が始まる」</strong>ことにあります。<br>Ly-Prumは業務の課題を整理し、関係者が共通のビジョンを持てるよう<strong>動くモック・ビフォーアフター比較・ROI試算</strong>で見える化します。<br>PMO経験 × AI活用により、従来なら数週間かかる提案を数日で完成させます。<br>
               </div>
               <div style="display:flex;gap:10px;flex-wrap:wrap">
                 <span style="background:var(--danger-lt);color:var(--danger);font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px"><i class="fas fa-times"></i> 開発会社ではありません</span>
@@ -1738,7 +1736,7 @@
                   <div style="font-size:11px;color:var(--txt-3);font-style:italic">Requirement Analysis</div>
                 </div>
               </div>
-              <div style="font-size:13px;color:var(--txt-2);line-height:1.85">ヒアリングを通じて「現状の業務フロー」と「ボトルネック」を整理。関係者全員が同じ課題認識を持てる状態を作り、DX化の優先順位を可視化します。</div>
+              <div style="font-size:13px;color:var(--txt-2);line-height:1.85">ヒアリングを通じて「現状の業務フロー」と「ボトルネック」を整理。<br>関係者全員が同じ課題認識を持てる状態を作り、DX化の優先順位を可視化します。</div>
             </div>
           </div>
           <div class="card" style="border-left:4px solid var(--accent)">
@@ -1750,7 +1748,7 @@
                   <div style="font-size:11px;color:var(--txt-3);font-style:italic">UI Mockup &amp; Prototyping</div>
                 </div>
               </div>
-              <div style="font-size:13px;color:var(--txt-2);line-height:1.85">AIを活用して動くUIモックを高速作成。<strong>この画面のように</strong>実際に操作できるプロトタイプで、システムのイメージを具体化。開発費をかけずに完成後のビジョンを体験できます。</div>
+              <div style="font-size:13px;color:var(--txt-2);line-height:1.85">AIを活用して動くUIモックを高速作成。<br><strong>この画面のように</strong>実際に操作できるプロトタイプで、システムのイメージを具体化。<br>開発費をかけずに完成後のビジョンを体験できます。</div>
             </div>
           </div>
           <div class="card" style="border-left:4px solid var(--warning)">
@@ -1762,7 +1760,7 @@
                   <div style="font-size:11px;color:var(--txt-3);font-style:italic">AI Image Generation</div>
                 </div>
               </div>
-              <div style="font-size:13px;color:var(--txt-2);line-height:1.85">提案資料・ロゴ・UIビジュアルを生成AIで作成。デザイナー不在でも説得力のあるビジュアルを短期間で用意でき、社内稟議・クライアント提案のクオリティを格段に高めます。</div>
+              <div style="font-size:13px;color:var(--txt-2);line-height:1.85">提案資料・ロゴ・UIビジュアルを生成AIで作成。<br>デザイナー不在でも説得力のあるビジュアルを短期間で用意でき、社内稟議・クライアント提案のクオリティを格段に高めます。</div>
             </div>
           </div>
           <div class="card" style="border-left:4px solid var(--success)">
@@ -1774,7 +1772,7 @@
                   <div style="font-size:11px;color:var(--txt-3);font-style:italic">Before/After &amp; ROI Visualization</div>
                 </div>
               </div>
-              <div style="font-size:13px;color:var(--txt-2);line-height:1.85">「導入前後で何がどう変わるか」を数字で可視化。工数削減・コスト削減・ROI・回収期間を経営層が判断できる形で提示します。このモック内のROI試算ページが実例です。</div>
+              <div style="font-size:13px;color:var(--txt-2);line-height:1.85">「導入前後で何がどう変わるか」を数字で可視化。<br>工数削減・コスト削減・ROI・回収期間を経営層が判断できる形で提示します。<br>このモック内のROI試算ページが実例です。</div>
             </div>
           </div>
         </div>
@@ -1861,17 +1859,17 @@
           <div class="card" style="border-top:3px solid var(--primary);text-align:center;padding:28px 20px">
             <div style="font-size:32px;color:var(--primary);margin-bottom:14px"><i class="fas fa-brain"></i></div>
             <div style="font-weight:800;font-size:14px;margin-bottom:10px;color:var(--txt-1)">PMO経験に基づく現場視点</div>
-            <div style="font-size:13px;color:var(--txt-2);line-height:1.85">実際のプロジェクト管理経験から、現場のリアルな課題を把握。絵に描いた餅ではなく、動く提案を作ります。</div>
+            <div style="font-size:13px;color:var(--txt-2);line-height:1.85">実際のプロジェクト管理経験から、現場のリアルな課題を把握。<br>絵に描いた餅ではなく、動く提案を作ります。</div>
           </div>
           <div class="card" style="border-top:3px solid var(--warning);text-align:center;padding:28px 20px">
             <div style="font-size:32px;color:var(--warning);margin-bottom:14px"><i class="fas fa-robot"></i></div>
             <div style="font-weight:800;font-size:14px;margin-bottom:10px;color:var(--txt-1)">AI活用で超高速プロトタイピング</div>
-            <div style="font-size:13px;color:var(--txt-2);line-height:1.85">従来なら数週間〜数ヶ月かかるUIモックを数日で作成。「まず見せる」が意思決定を加速します。</div>
+            <div style="font-size:13px;color:var(--txt-2);line-height:1.85">従来なら数週間〜数ヶ月かかるUIモックを数日で作成。<br>「まず見せる」が意思決定を加速します。</div>
           </div>
           <div class="card" style="border-top:3px solid var(--success);text-align:center;padding:28px 20px">
             <div style="font-size:32px;color:var(--success);margin-bottom:14px"><i class="fas fa-route"></i></div>
             <div style="font-weight:800;font-size:14px;margin-bottom:10px;color:var(--txt-1)">開発会社への的確な橋渡し</div>
-            <div style="font-size:13px;color:var(--txt-2);line-height:1.85">「何を作るか」が明確になれば開発コストも見積精度も上がります。Ly-Prumはその前工程を担います。</div>
+            <div style="font-size:13px;color:var(--txt-2);line-height:1.85">「何を作るか」が明確になれば開発コストも見積精度も上がります。<br>Ly-Prumはその前工程を担います。</div>
           </div>
         </div>
 
@@ -1886,7 +1884,7 @@
               <button class="btn" style="background:#fff;color:#1B5E20;font-weight:800;padding:13px 32px;font-size:14px;border-radius:var(--r);box-shadow:0 4px 20px rgba(0,0,0,.25);border:none;cursor:pointer" onclick="goTo('roi')">
                 <i class="fas fa-calculator"></i>　ROI・効果を試算してみる
               </button>
-              <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;font-weight:700;padding:13px 32px;font-size:14px;border-radius:var(--r);border:1px solid rgba(255,255,255,.35);cursor:pointer;backdrop-filter:blur(8px)" onclick="toast('お問い合わせありがとうございます。準備中です。','ok')">
+              <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;font-weight:700;padding:13px 32px;font-size:14px;border-radius:var(--r);border:1px solid rgba(255,255,255,.35);cursor:pointer;backdrop-filter:blur(8px)" onclick="toast('お問い合わせありがとうございます。<br>準備中です。<br>','ok')">
                 <i class="fas fa-envelope"></i>　お問い合わせ
               </button>
             </div>
@@ -2408,7 +2406,7 @@
             <div class="card-h"><i class="fas fa-file-download" style="color:var(--success)"></i> CSVエクスポート</div>
             <div class="card-b">
               <p style="font-size:13px;color:var(--txt-2);margin-bottom:16px;line-height:1.7">
-                現在の発注データをCSVファイルとしてダウンロードします。
+                現在の発注データをCSVファイルとしてダウンロードします。<br>
               </p>
               <div style="background:var(--bg);border-radius:var(--r-sm);padding:14px;margin-bottom:16px">
                 <div class="fg" style="margin-bottom:10px">
@@ -2443,7 +2441,7 @@
             <div class="card-h"><i class="fas fa-file-upload" style="color:var(--primary)"></i> CSVインポート</div>
             <div class="card-b">
               <p style="font-size:13px;color:var(--txt-2);margin-bottom:16px;line-height:1.7">
-                CSVファイルから発注データを一括登録します。
+                CSVファイルから発注データを一括登録します。<br>
               </p>
               <div style="background:var(--bg);border-radius:var(--r-sm);padding:14px;margin-bottom:16px;text-align:center">
                 <label id="csvDropLbl" style="display:block;cursor:pointer;">
@@ -2625,9 +2623,9 @@
             <!-- 前提条件注記 -->
             <div style="background:var(--primary-50);border-radius:var(--r-sm);padding:14px;font-size:12px;color:var(--txt-2);line-height:1.8">
               <b style="color:var(--primary)"><i class="fas fa-info-circle"></i> 試算の前提条件</b><br>
-              Ly-Prum導入後の処理時間を <b>8分/件</b>（約80%削減）として試算。
+              Ly-Prum導入後の処理時間を <b>8分/件</b>（約80%削減）として試算。<br>
               名刺単価は現状より <b>15%削減</b> を想定（Growth Link経由の仕入れコスト削減分）。<br>
-              月額利用料は左のパネルで変更できます。実際の効果はお客様の環境により異なります。
+              月額利用料は左のパネルで変更できます。<br>実際の効果はお客様の環境により異なります。<br>
             </div>
 
           </div>
@@ -2696,23 +2694,23 @@ let employees = [
 
 let orders = [
   { id:'ORD-001', empId:'EMP001', name:'山田 太郎',  kana:'やまだ たろう',  romaji:'Taro Yamada',      dept:'営業部',    title:'課長',    phone:'03-1234-5678', email:'yamada@lifestage.co.jp',   qty:100, pri:'urgent', round:'first',  status:1, sales:'高橋 隆 (Growth Link)', created:'2024/11/20',
-    comments:[ {auth:'山田 太郎', role:'staff', time:'2024/11/20 10:30', text:'初めての発注になります。よろしくお願いします。', av:'山'} ],
+    comments:[ {auth:'山田 太郎', role:'staff', time:'2024/11/20 10:30', text:'初めての発注になります。<br>よろしくお願いします。<br>', av:'山'} ],
     hist:[ {time:'2024/11/20 10:30',ttl:'STEP1: 発注依頼',desc:'山田太郎さんが発注を申請しました',done:true}, {time:'',ttl:'STEP2: 総務確認・制作',desc:'総務による確認・承認待ち',done:false} ] },
 
   { id:'ORD-002', empId:'EMP002', name:'佐藤 花子',  kana:'さとう はなこ',  romaji:'Hanako Sato',      dept:'総務部',    title:'主任',    phone:'03-9876-5432', email:'sato@lifestage.co.jp',   qty:200, pri:'normal', round:'repeat', status:5, sales:'高橋 隆 (Growth Link)', created:'2024/11/15',
-    comments:[ {auth:'佐藤 花子',role:'staff',time:'2024/11/15 09:00',text:'前回と同じ内容でお願いします。',av:'佐'}, {auth:'制作チーム',role:'production',time:'2024/11/16 14:00',text:'前回データ確認しました。制作を開始します。',av:'制'} ],
+    comments:[ {auth:'佐藤 花子',role:'staff',time:'2024/11/15 09:00',text:'前回と同じ内容でお願いします。<br>',av:'佐'}, {auth:'制作チーム',role:'production',time:'2024/11/16 14:00',text:'前回データ確認しました。<br>制作を開始します。<br>',av:'制'} ],
     hist:[ {time:'2024/11/15 09:00',ttl:'STEP1: 発注依頼',desc:'佐藤花子さんが発注申請（再注文）',done:true}, {time:'2024/11/15 11:00',ttl:'STEP2: 制作',desc:'Growth Link制作チームが既存データで作業開始',done:true}, {time:'2024/11/16 14:00',ttl:'STEP3: 確認・やり取り',desc:'佐藤さんがプレビューを承認',done:true}, {time:'2024/11/17 10:00',ttl:'STEP4: 印刷・納品',desc:'200枚の名刺が納品されました',done:true} ] },
 
   { id:'ORD-003', empId:'EMP004', name:'田中 美咲',  kana:'たなか みさき',  romaji:'Misaki Tanaka',    dept:'営業部',    title:'係長',    phone:'03-5555-7777', email:'tanaka@lifestage.co.jp',   qty:100, pri:'urgent', round:'first',  status:3, sales:'山本 健 (Growth Link)', created:'2024/11/22',
-    comments:[ {auth:'田中 美咲',role:'staff',time:'2024/11/22 09:30',text:'急ぎでお願いします。来週月曜日に得意先へ伺う予定があります。',av:'田'}, {auth:'制作チーム',role:'production',time:'2024/11/22 15:00',text:'プレビューが完成しました。ご確認をお願いします。',av:'制'} ],
-    hist:[ {time:'2024/11/22 09:30',ttl:'STEP1: 発注依頼',desc:'田中美咲さんが発注申請',done:true}, {time:'2024/11/22 10:00',ttl:'STEP2: 総務承認・制作',desc:'総務 佐藤さんが承認。制作開始',done:true}, {time:'2024/11/22 15:00',ttl:'STEP3: プレビュー確認',desc:'プレビュー生成完了。確認待ち',done:true}, {time:'',ttl:'STEP4: 総務校了',desc:'社員確認後、総務校了へ',done:false} ] },
+    comments:[ {auth:'田中 美咲',role:'staff',time:'2024/11/22 09:30',text:'急ぎでお願いします。<br>来週月曜日に得意先へ伺う予定があります。<br>',av:'田'}, {auth:'制作チーム',role:'production',time:'2024/11/22 15:00',text:'プレビューが完成しました。<br>ご確認をお願いします。<br>',av:'制'} ],
+    hist:[ {time:'2024/11/22 09:30',ttl:'STEP1: 発注依頼',desc:'田中美咲さんが発注申請',done:true}, {time:'2024/11/22 10:00',ttl:'STEP2: 総務承認・制作',desc:'総務 佐藤さんが承認。<br>制作開始',done:true}, {time:'2024/11/22 15:00',ttl:'STEP3: プレビュー確認',desc:'プレビュー生成完了。<br>確認待ち',done:true}, {time:'',ttl:'STEP4: 総務校了',desc:'社員確認後、総務校了へ',done:false} ] },
 
   { id:'ORD-004', empId:'EMP007', name:'渡辺 誠',    kana:'わたなべ まこと', romaji:'Makoto Watanabe',  dept:'営業部',    title:'担当',    phone:'03-1111-2222', email:'watanabe@lifestage.co.jp', qty:100, pri:'normal', round:'first',  status:2, sales:'高橋 隆 (Growth Link)', created:'2024/11/21',
-    comments:[ {auth:'渡辺 誠',role:'staff',time:'2024/11/21 14:00',text:'英語表記も入れてほしいです。Watanabe Makotoでお願いします。',av:'渡'}, {auth:'総務 佐藤',role:'admin',time:'2024/11/21 15:30',text:'承認しました。英語表記の件、制作チームに連携します。',av:'総'} ],
-    hist:[ {time:'2024/11/21 14:00',ttl:'STEP1: 発注依頼',desc:'渡辺誠さんが発注申請',done:true}, {time:'2024/11/21 15:30',ttl:'STEP2: 総務承認・制作開始',desc:'総務承認済み。制作中...',done:true}, {time:'',ttl:'STEP3: プレビュー確認',desc:'制作完了後、プレビュー確認',done:false} ] },
+    comments:[ {auth:'渡辺 誠',role:'staff',time:'2024/11/21 14:00',text:'英語表記も入れてほしいです。<br>Watanabe Makotoでお願いします。<br>',av:'渡'}, {auth:'総務 佐藤',role:'admin',time:'2024/11/21 15:30',text:'承認しました。<br>英語表記の件、制作チームに連携します。<br>',av:'総'} ],
+    hist:[ {time:'2024/11/21 14:00',ttl:'STEP1: 発注依頼',desc:'渡辺誠さんが発注申請',done:true}, {time:'2024/11/21 15:30',ttl:'STEP2: 総務承認・制作開始',desc:'総務承認済み。<br>制作中...',done:true}, {time:'',ttl:'STEP3: プレビュー確認',desc:'制作完了後、プレビュー確認',done:false} ] },
 
   { id:'ORD-005', empId:'EMP005', name:'高橋 健太',  kana:'たかはし けんた', romaji:'Kenta Takahashi',  dept:'経理部',    title:'担当',    phone:'03-3333-4444', email:'takahashi@lifestage.co.jp', qty:200, pri:'urgent', round:'repeat', status:3, sales:'山本 健 (Growth Link)', created:'2024/11/19',
-    comments:[ {auth:'高橋 健太',role:'staff',time:'2024/11/19 10:00',text:'前回から役職が変わったので修正をお願いします。',av:'高'}, {auth:'制作チーム',role:'production',time:'2024/11/20 11:00',text:'役職修正済みです。プレビューをご確認ください。',av:'制'} ],
+    comments:[ {auth:'高橋 健太',role:'staff',time:'2024/11/19 10:00',text:'前回から役職が変わったので修正をお願いします。<br>',av:'高'}, {auth:'制作チーム',role:'production',time:'2024/11/20 11:00',text:'役職修正済みです。<br>プレビューをご確認ください。<br>',av:'制'} ],
     hist:[ {time:'2024/11/19 10:00',ttl:'STEP1: 発注依頼',desc:'高橋健太さんが発注申請（再注文）',done:true}, {time:'2024/11/19 14:00',ttl:'STEP2: 制作',desc:'既存データに役職修正を加えて制作',done:true}, {time:'',ttl:'STEP3: 確認・やり取り',desc:'高橋さんのプレビュー確認待ち',done:false} ] },
 
   { id:'ORD-006', empId:'EMP003', name:'鈴木 一郎',  kana:'すずき いちろう', romaji:'Ichiro Suzuki',    dept:'開発部',    title:'部長',    phone:'03-6666-7777', email:'suzuki@lifestage.co.jp', qty:100, pri:'normal', round:'first', status:2, sales:'高橋 隆 (Growth Link)', created:'2024/11/23',
@@ -2817,7 +2815,7 @@ function sendReset() {
   document.getElementById('fpStep2').style.display = '';
   document.getElementById('fpFooter').style.display = 'none';
   document.getElementById('fpSentMsg').textContent =
-    `${em} 宛にパスワードリセットリンクを送信しました。メールをご確認ください。（有効期限: 1時間）`;
+    `${em} 宛にパスワードリセットリンクを送信しました。<br>メールをご確認ください。<br>（有効期限: 1時間）`;
 }
 
 function login(r) {
@@ -2964,20 +2962,20 @@ function closeNav() {
 
 // ══ NAV ══
 const DEMO_MSGS = {
-  'dash':      'ダッシュボードで今月の発注状況を一目確認。<strong>「対応する」ボタン</strong>で案件詳細へ直接遷移できます。承認待ち件数がリアルタイムで表示されます。',
-  'orders':    '発注一覧では<strong>ステータス・部署・担当者</strong>でフィルタ可能。任意の案件をタップすると詳細・プレビュー・承認チェックリストが表示されます。',
-  'det':       '案件詳細では名刺デザインの<strong>リアルタイムプレビュー</strong>と承認チェックリストを確認できます。コメント機能で担当者間の連絡もここで完結します。',
-  'new':       '新規発注フォームはたった<strong>4ステップ</strong>。住所・役職は社員マスタから自動入力されるため、入力ミスが大幅に減ります。',
-  'master':    '社員マスタを一元管理。<strong>異動・昇格時の情報更新</strong>がここで完結し、次回発注時に自動反映されます。',
-  'retire':    '離職者管理では退職社員の名刺在庫・回収状況を追跡。<strong>情報漏洩リスクの見える化</strong>が可能です。',
-  'csv':       'CSVインポートで<strong>100名分の一括登録</strong>も数秒で完了。既存の社員台帳をそのまま取り込めます。',
-  'settings':  'システム設定では承認フロー・権限・通知ルールをカスタマイズ。<strong>ワークフローを御社の運用に合わせて</strong>調整できます。',
-  'exec':      '経営ダッシュボードでは<strong>コスト・納期・品質</strong>をKPIとして可視化。先回りアラートで問題を事前にキャッチできます。',
-  'roi':       'ROI試算ツール。<strong>現状の工数・コストを入力</strong>するだけで、Ly-Prum導入後の削減効果を自動計算します。',
-  'proposal':  'Ly-Prum サービス紹介。<strong>ビフォーアフター比較表</strong>と導入ロードマップで提案の説得力を高めます。',
-  'sales':     '受注管理ダッシュボード。<strong>顧客ごとの売上・進捗・アクション履歴</strong>を一元管理できます。',
-  'prod':      '制作管理ダッシュボード。<strong>デザイン・校正・印刷</strong>の各フェーズをリアルタイムで把握できます。',
-  'gl-manager':'Growth Link管理画面。<strong>取引先別の受注状況とKPI</strong>を一元確認できます。',
+  'dash':      'ダッシュボードで今月の発注状況を一目確認。<br><strong>「対応する」ボタン</strong>で案件詳細へ直接遷移できます。<br>承認待ち件数がリアルタイムで表示されます。<br>',
+  'orders':    '発注一覧では<strong>ステータス・部署・担当者</strong>でフィルタ可能。<br>任意の案件をタップすると詳細・プレビュー・承認チェックリストが表示されます。<br>',
+  'det':       '案件詳細では名刺デザインの<strong>リアルタイムプレビュー</strong>と承認チェックリストを確認できます。<br>コメント機能で担当者間の連絡もここで完結します。<br>',
+  'new':       '新規発注フォームはたった<strong>4ステップ</strong>。<br>住所・役職は社員マスタから自動入力されるため、入力ミスが大幅に減ります。<br>',
+  'master':    '社員マスタを一元管理。<br><strong>異動・昇格時の情報更新</strong>がここで完結し、次回発注時に自動反映されます。<br>',
+  'retire':    '離職者管理では退職社員の名刺在庫・回収状況を追跡。<br><strong>情報漏洩リスクの見える化</strong>が可能です。<br>',
+  'csv':       'CSVインポートで<strong>100名分の一括登録</strong>も数秒で完了。<br>既存の社員台帳をそのまま取り込めます。<br>',
+  'settings':  'システム設定では承認フロー・権限・通知ルールをカスタマイズ。<br><strong>ワークフローを御社の運用に合わせて</strong>調整できます。<br>',
+  'exec':      '経営ダッシュボードでは<strong>コスト・納期・品質</strong>をKPIとして可視化。<br>先回りアラートで問題を事前にキャッチできます。<br>',
+  'roi':       'ROI試算ツール。<br><strong>現状の工数・コストを入力</strong>するだけで、Ly-Prum導入後の削減効果を自動計算します。<br>',
+  'proposal':  'Ly-Prum サービス紹介。<br><strong>ビフォーアフター比較表</strong>と導入ロードマップで提案の説得力を高めます。<br>',
+  'sales':     '受注管理ダッシュボード。<br><strong>顧客ごとの売上・進捗・アクション履歴</strong>を一元管理できます。<br>',
+  'prod':      '制作管理ダッシュボード。<br><strong>デザイン・校正・印刷</strong>の各フェーズをリアルタイムで把握できます。<br>',
+  'gl-manager':'Growth Link管理画面。<br><strong>取引先別の受注状況とKPI</strong>を一元確認できます。<br>',
 };
 
 function goTo(v) {
@@ -3276,14 +3274,14 @@ function renderActBox(o) {
     if (role === 'production' && o.status === 1) {
       c.innerHTML = `${repeatTag}
         <div class="act-status mb14"><div class="act-status-ttl"><i class="fas fa-arrow-right"></i> 次のアクション</div>
-        <div class="act-status-desc">再注文のため総務確認なし。前回データを確認しプレビューを送信してください。</div></div>
+        <div class="act-status-desc">再注文のため総務確認なし。<br>前回データを確認しプレビューを送信してください。</div></div>
         <button class="btn btn-success" style="width:100%;justify-content:center;font-size:14px" onclick="completeStep('${o.id}')">
           <i class="fas fa-upload"></i> STEP3へ: プレビューをアップロード
         </button>`;
     } else if (role === 'staff' && o.status === 3) {
       c.innerHTML = `${repeatTag}
         <div class="act-status mb14"><div class="act-status-ttl"><i class="fas fa-arrow-right"></i> 次のアクション</div>
-        <div class="act-status-desc">プレビューを確認し承認してください。承認後は直接印刷・納品へ進みます（総務校了なし）。</div></div>
+        <div class="act-status-desc">プレビューを確認し承認してください。<br>承認後は直接印刷・納品へ進みます（総務校了なし）。</div></div>
         <button class="btn btn-success" style="width:100%;justify-content:center;font-size:14px" onclick="completeStep('${o.id}')">
           <i class="fas fa-check"></i> STEP4へ: プレビューを承認（印刷・納品へ）
         </button>
@@ -3304,7 +3302,7 @@ function renderActBox(o) {
   // 初回フロー（5ステップ）
   let canAct = false, actLbl = '', actDesc = '';
   if (role==='admin' && o.status===1) { canAct=true; actLbl='STEP2へ: 承認して制作依頼'; actDesc='内容を確認し、Growth Link制作チームへ依頼します'; }
-  else if (role==='production' && o.status===2) { canAct=true; actLbl='STEP3へ: プレビューをアップロード'; actDesc='制作が完了しました。プレビューを送信します'; }
+  else if (role==='production' && o.status===2) { canAct=true; actLbl='STEP3へ: プレビューをアップロード'; actDesc='制作が完了しました。<br>プレビューを送信します'; }
   else if (role==='staff' && o.status===3) { canAct=true; actLbl='STEP4へ: プレビューを承認'; actDesc='プレビューを確認し、問題なければ承認します'; }
   else if (role==='admin' && o.status===4) { canAct=true; actLbl='STEP5へ: 最終校了・印刷指示'; actDesc='最終確認を行い、印刷・納品へ進めます'; }
 
@@ -3338,16 +3336,16 @@ function completeStep(id) {
       renderTl(o); renderActBox(o); renderDashTable(); renderOrdTable();
       document.getElementById('chkCard').style.display = '';
       updateChkProgress();
-      toast('プレビューを送信しました！社員の確認依頼を通知しました。','ok');
+      toast('プレビューを送信しました！社員の確認依頼を通知しました。<br>','ok');
     } else if (o.status === 3) {
       // 社員がプレビュー承認 → 総務校了スキップして直接納品へ
       o.status = 5;
-      o.hist.push({ time:now, ttl:'STEP4: 印刷・納品', desc:`${ROLES[role].label}がプレビューを承認。総務校了スキップし印刷・納品へ進みます（再注文）`, done:true });
+      o.hist.push({ time:now, ttl:'STEP4: 印刷・納品', desc:`${ROLES[role].label}がプレビューを承認。<br>総務校了スキップし印刷・納品へ進みます（再注文）`, done:true });
       o.hist = o.hist.map(h => !h.done&&h.time==='' ? {...h,done:true,time:now} : h);
       renderSteps('detSteps', o.status, o.round);
       renderTl(o); renderActBox(o); renderDashTable(); renderOrdTable();
       document.getElementById('chkCard').style.display = 'none';
-      toast('プレビューを承認しました！印刷・納品へ進みます（再注文のため総務校了なし）。','ok');
+      toast('プレビューを承認しました！印刷・納品へ進みます（再注文のため総務校了なし）。<br>','ok');
     }
     return;
   }
@@ -3366,7 +3364,7 @@ function completeStep(id) {
   const showChk = o.status===3||o.status===4;
   document.getElementById('chkCard').style.display = showChk?'':'none';
 
-  const msgs = {2:'承認しました！制作チームへ依頼を送信しました。',3:'プレビューを送信しました！確認依頼を通知しました。',4:'プレビューを承認しました！総務校了へ進みます。',5:'最終校了が完了しました！印刷・納品を指示しました。'};
+  const msgs = {2:'承認しました！制作チームへ依頼を送信しました。<br>',3:'プレビューを送信しました！確認依頼を通知しました。<br>',4:'プレビューを承認しました！総務校了へ進みます。<br>',5:'最終校了が完了しました！印刷・納品を指示しました。<br>'};
   toast(msgs[o.status]||'ステータスを更新しました','ok');
 
   const pend = orders.filter(x=>x.status===1).length;
@@ -3377,7 +3375,7 @@ function revReq(id) {
   const o = orders.find(x => x.id === id);
   document.getElementById('modalTtl').textContent = '修正依頼を送る';
   document.getElementById('modalBody').innerHTML = `
-    <p style="font-size:13px;color:var(--txt-2);margin-bottom:12px">修正内容を入力してください。制作チームに通知されます。</p>
+    <p style="font-size:13px;color:var(--txt-2);margin-bottom:12px">修正内容を入力してください。<br>制作チームに通知されます。</p>
     <textarea class="cmt-textarea" id="revNote" rows="4" style="width:100%" placeholder="例: 電話番号の下4桁を5679に変更してください"></textarea>`;
   document.getElementById('modalOk').textContent = '修正依頼を送る';
   document.getElementById('modalOk').onclick = () => {
@@ -3386,7 +3384,7 @@ function revReq(id) {
       const now = new Date().toLocaleString('ja-JP');
       o.comments.push({auth:ROLES[role].label,role,time:now,text:`【修正依頼】${note}`,av:ROLES[role].av});
       o.status = 2;
-      o.hist.push({time:now,ttl:'修正依頼',desc:'修正依頼が提出されました。制作中へ戻ります',done:true});
+      o.hist.push({time:now,ttl:'修正依頼',desc:'修正依頼が提出されました。<br>制作中へ戻ります',done:true});
       renderCmts(o); renderSteps('detSteps',o.status,o.round); renderTl(o); renderActBox(o);
       toast('修正依頼を送信しました','warn');
     }
@@ -3444,7 +3442,7 @@ function reorder(id) {
   pg.innerHTML = `<span style="color:var(--success);font-weight:700"><i class="fas fa-redo"></i> 再注文 — ${o.id} のデータを引き継ぎました</span>`;
 
   livePrev();
-  toast(`${o.name}さんの前回データを引き継ぎました。内容を確認して送信してください。`, 'ok');
+  toast(`${o.name}さんの前回データを引き継ぎました。<br>内容を確認して送信してください。<br>`, 'ok');
 }
 
 // ══ NEW ORDER ══
@@ -3677,7 +3675,7 @@ function holdOrder(id) {
   if (!o) return;
   o.hold = !o.hold;
   if (o.hold) {
-    toast('考慮中にしました。確認後承認してください', 'warn');
+    toast('考慮中にしました。<br>確認後承認してください', 'warn');
   } else {
     toast('考慮中を解除しました', 'info');
   }
@@ -4214,7 +4212,7 @@ calcRoi();
       </div>
     </div>
     <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--txt-3)">
-      ※ これはイメージです。実際の印刷物とは異なる場合があります。
+      ※ これはイメージです。<br>実際の印刷物とは異なる場合があります。<br>
     </div>
   </div>
 </div>
