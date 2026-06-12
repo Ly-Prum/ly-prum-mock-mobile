@@ -768,8 +768,12 @@
 
     /* ── 横スクロール防止 ── */
     body{overflow-x:hidden;}
-    .view table{min-width:0!important;width:100%!important;}
     .tbl-wrap{overflow-x:auto!important;}
+    .card-b{overflow-x:auto!important;}
+    /* 発注一覧：モバイルカード表示のためtheadを非表示 */
+    #view-orders .tbl-wrap table thead{display:none!important;}
+    /* 権限表：最小幅を確保してスクロール */
+    #view-settings table{min-width:520px!important;width:max-content!important;}
 
     /* ── PCブラウザで開いたとき：アプリを430px幅に制限 ── */
     @media(min-width:600px){
@@ -3045,7 +3049,32 @@ function renderOrdTable(data) {
     ? orders.filter(o => o.empId === currentUser.empId)
     : orders;
   const rows = data !== undefined ? data : base;
-  document.getElementById('ordTbody').innerHTML = rows.map(o => `
+  const isMob = window.innerWidth < 600;
+  document.getElementById('ordTbody').innerHTML = rows.map(o => isMob ? `
+    <tr><td colspan="9" style="padding:0;border:none">
+      <div onclick="openDet('${o.id}')" style="padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;display:block;background:var(--white)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <code style="font-size:11px;background:var(--bg);padding:2px 8px;border-radius:4px;color:var(--txt-2);font-weight:700">${o.id}</code>
+          <div style="display:flex;gap:6px;align-items:center">${priBadge(o.pri)} ${stBadge(o.status)}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <div class="av" style="background:${avColor(o.name)};width:36px;height:36px;font-size:14px;flex-shrink:0">${o.name[0]}</div>
+          <div style="min-width:0">
+            <div style="font-weight:700;font-size:14px;color:var(--txt-1)">${o.name}</div>
+            <div style="font-size:12px;color:var(--txt-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${o.dept} ${o.title}</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;font-size:12px;color:var(--txt-3);flex-wrap:wrap;margin-bottom:10px">
+          <span><i class="fas fa-calendar-alt" style="margin-right:3px;color:var(--primary)"></i>${o.created}</span>
+          <span><i class="fas fa-id-card" style="margin-right:3px;color:var(--primary)"></i>${o.qty}枚</span>
+          <span class="rbadge ${o.round==='first'?'r-first':'r-rep'}" style="font-size:9px">${o.round==='first'?'初回':'2回目以降'}</span>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:8px">
+          ${role==='staff'&&o.status===5 ? `<button class="btn btn-sm btn-success" onclick="event.stopPropagation();reorder('${o.id}')"><i class="fas fa-redo"></i> 再注文</button>` : ''}
+          <button class="btn btn-sm ${canAct(o)?'btn-primary':'btn-ghost'}" onclick="event.stopPropagation();openDet('${o.id}')">${canAct(o)?'対応する':'詳細'}</button>
+        </div>
+      </div>
+    </td></tr>` : `
     <tr onclick="openDet('${o.id}')">
       <td><code style="font-size:11px;background:var(--bg);padding:2px 7px;border-radius:4px">${o.id}</code></td>
       <td><div class="flex aic g8"><div class="av" style="background:${avColor(o.name)};width:26px;height:26px;font-size:10px">${o.name[0]}</div>${o.name}</div></td>
