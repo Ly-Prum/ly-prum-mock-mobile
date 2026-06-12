@@ -41,57 +41,135 @@
 
     /* ─── LOGIN ─── */
     #loginScreen{
-      min-height:100vh;display:flex;flex-direction:column;
-      align-items:center;justify-content:center;
+      min-height:100vh;display:flex;
       background:linear-gradient(135deg,#0D47A1 0%,#1565C0 50%,#1E88E5 100%);
       position:relative;overflow:hidden;
     }
-    #loginScreen::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;
-      background:rgba(255,255,255,.04);top:-280px;right:-200px;}
-    #loginScreen::after{content:'';position:absolute;width:450px;height:450px;border-radius:50%;
-      background:rgba(255,255,255,.04);bottom:-180px;left:-150px;}
-    .lg-logo{text-align:center;margin-bottom:40px;position:relative;z-index:1;}
-    .lg-logo .brand{font-size:38px;font-weight:900;color:#fff;letter-spacing:5px;text-transform:uppercase;}
+    #loginScreen::before{content:'';position:absolute;width:800px;height:800px;border-radius:50%;background:rgba(255,255,255,.035);top:-320px;right:-240px;pointer-events:none;}
+    #loginScreen::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.035);bottom:-200px;left:-180px;pointer-events:none;}
+
+    /* ── Left panel: brand + role cards ── */
+    .lg-left{
+      flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:52px 44px;gap:28px;position:relative;z-index:1;overflow-y:auto;text-align:center;
+    }
+    .lg-logo .brand{font-size:46px;font-weight:900;color:#fff;letter-spacing:7px;text-transform:uppercase;}
     .lg-logo .brand em{color:#90CAF9;font-style:normal;}
-    .lg-logo .sub{font-size:12px;color:rgba(255,255,255,.65);margin-top:6px;letter-spacing:2.5px;}
-    .lg-caption{color:rgba(255,255,255,.9);font-size:17px;font-weight:500;margin-bottom:24px;position:relative;z-index:1;}
+    .lg-logo .sub{font-size:11px;color:rgba(255,255,255,.48);margin-top:8px;letter-spacing:3px;}
+    .lg-feats{display:flex;flex-direction:column;gap:10px;width:100%;max-width:520px;}
+    .lg-feat{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-sm);padding:12px 18px;text-align:left;}
+    .lg-feat i{color:#90CAF9;font-size:15px;width:22px;flex-shrink:0;}
+    .lg-feat span{font-size:13px;color:rgba(255,255,255,.82);line-height:1.45;}
+    .lg-feat strong{color:#90CAF9;}
+    .lg-role-header{font-size:10px;font-weight:800;color:rgba(255,255,255,.38);letter-spacing:3px;text-transform:uppercase;}
+    .lg-footer{color:rgba(255,255,255,.3);font-size:11px;text-align:center;line-height:1.9;}
 
-    /* Login form */
-    .lg-form{background:rgba(255,255,255,.12);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.22);border-radius:var(--r-lg);padding:28px 32px;width:min(400px,92vw);position:relative;z-index:1;margin-bottom:20px;}
+    /* ── Right panel: white login form ── */
+    .lg-right{
+      width:480px;flex-shrink:0;background:#fff;
+      display:flex;align-items:center;justify-content:center;
+      padding:0 52px;position:relative;z-index:1;overflow-y:auto;
+      box-shadow:-8px 0 64px rgba(13,71,161,.25);min-height:100vh;
+    }
+    .lg-right-inner{width:100%;display:flex;flex-direction:column;gap:20px;padding:56px 0;}
+
+    /* PC right header */
+    .lg-right-brand{font-size:18px;font-weight:900;color:var(--primary);letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;}
+    .lg-right-brand em{color:var(--primary-lt);font-style:normal;}
+    .lg-right-ttl{font-size:28px;font-weight:800;color:var(--txt-1);margin-bottom:4px;}
+    .lg-right-sub-txt{font-size:13px;color:var(--txt-3);}
+
+    /* Mobile-only elements inside lg-right */
+    .lg-logo-mob{display:none;text-align:center;}
+    .lg-logo-mob .brand{font-size:32px;font-weight:900;color:#fff;letter-spacing:4px;text-transform:uppercase;}
+    .lg-logo-mob .brand em{color:#90CAF9;font-style:normal;}
+    .lg-logo-mob .sub{font-size:11px;color:rgba(255,255,255,.48);margin-top:5px;letter-spacing:2px;}
+    .lg-mob-caption{display:none;color:rgba(255,255,255,.88);font-size:16px;font-weight:500;text-align:center;}
+    .lg-divider-mob{display:none;}
+
+    /* Login form — white-bg default (PC) */
+    .lg-form{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);}
+    .lg-form-inner{padding:22px;}
     .lg-input-wrap{margin-bottom:14px;}
-    .lg-input-lbl{font-size:11px;color:rgba(255,255,255,.75);font-weight:600;margin-bottom:6px;display:block;}
-    .lg-input{width:100%;padding:10px 14px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:var(--r-sm);color:#fff;font-size:14px;outline:none;transition:border-color .2s;}
-    .lg-input::placeholder{color:rgba(255,255,255,.45);}
-    .lg-input:focus{border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.2);}
-    .lg-btn{width:100%;padding:12px;background:#fff;color:var(--primary-dk);border:none;border-radius:var(--r-sm);font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;margin-top:4px;}
-    .lg-btn:hover{background:#E3F2FD;box-shadow:0 6px 20px rgba(0,0,0,.2);}
+    .lg-input-lbl{font-size:11px;color:var(--txt-2);font-weight:700;margin-bottom:6px;display:block;}
+    .lg-input{width:100%;padding:10px 14px;background:#fff;border:1.5px solid var(--border);border-radius:var(--r-sm);color:var(--txt-1);font-size:14px;outline:none;transition:all .2s;font-family:inherit;}
+    .lg-input::placeholder{color:var(--txt-3);}
+    .lg-input:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(21,101,192,.08);}
+    .lg-btn{width:100%;padding:13px;background:var(--primary);color:#fff;border:none;border-radius:var(--r-sm);font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;}
+    .lg-btn:hover{background:var(--primary-dk);box-shadow:0 6px 20px rgba(21,101,192,.3);}
     .lg-forgot{text-align:right;margin-top:10px;}
-    .lg-forgot a{color:rgba(255,255,255,.7);font-size:11px;cursor:pointer;text-decoration:underline;}
-    .lg-forgot a:hover{color:#fff;}
-    .lg-divider{display:flex;align-items:center;gap:10px;margin:16px 0 0;color:rgba(255,255,255,.45);font-size:11px;}
-    .lg-divider::before,.lg-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.2);}
+    .lg-forgot a{color:var(--txt-3);font-size:11px;cursor:pointer;text-decoration:underline;}
+    .lg-forgot a:hover{color:var(--primary);}
+    .lg-divider{display:flex;align-items:center;gap:10px;color:var(--txt-3);font-size:11px;}
+    .lg-divider::before,.lg-divider::after{content:'';flex:1;height:1px;background:var(--border);}
 
-    .role-cards{display:flex;flex-wrap:wrap;gap:16px;position:relative;z-index:1;justify-content:center;max-width:740px;}
+    /* Role cards */
+    .role-cards{display:flex;flex-wrap:wrap;gap:13px;position:relative;z-index:1;justify-content:center;max-width:560px;}
     .role-card{
-      background:rgba(255,255,255,.12);backdrop-filter:blur(20px);
-      border:1px solid rgba(255,255,255,.22);border-radius:var(--r-lg);
-      padding:26px 22px;width:220px;text-align:center;cursor:pointer;
+      background:rgba(255,255,255,.1);backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,.2);border-radius:var(--r);
+      padding:20px 16px;width:calc(33.33% - 9px);min-width:155px;text-align:center;cursor:pointer;
       transition:all .3s;color:#fff;flex-shrink:0;
     }
-    .role-card:hover{background:rgba(255,255,255,.22);transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.24);}
+    .role-card:hover{background:rgba(255,255,255,.2);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.24);}
     .role-card .rc-icon{
-      width:56px;height:56px;border-radius:14px;
-      background:rgba(255,255,255,.12);
-      display:flex;align-items:center;justify-content:center;
-      margin:0 auto 14px;font-size:24px;opacity:.95;
+      width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.12);
+      display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px;opacity:.95;
     }
-    .role-card .rc-title{font-size:16px;font-weight:700;margin-bottom:5px;}
-    .role-card .rc-desc{font-size:12px;opacity:.7;line-height:1.6;}
-    .rc-badge{
-      display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;margin-top:10px;font-weight:700;
-      background:rgba(255,255,255,.15);color:rgba(255,255,255,.82);letter-spacing:.3px;
+    .role-card .rc-title{font-size:14px;font-weight:700;margin-bottom:4px;}
+    .role-card .rc-desc{font-size:11px;opacity:.68;line-height:1.55;}
+    .rc-badge{display:inline-block;font-size:9px;padding:2px 9px;border-radius:20px;margin-top:8px;font-weight:700;background:rgba(255,255,255,.12);color:rgba(255,255,255,.72);}
+
+    .lg-footer{color:rgba(255,255,255,.3);font-size:11px;text-align:center;line-height:1.9;}
+
+    /* ── Mobile: stack vertically ── */
+    @media(max-width:1023px){
+      #loginScreen{flex-direction:column;overflow-y:auto;}
+      #loginScreen::before,#loginScreen::after{display:none;}
+      .lg-left{
+        order:2;flex:none;width:100%;min-height:auto;justify-content:flex-start;
+        padding:16px 20px 44px;gap:18px;
+      }
+      .lg-logo{display:none;}
+      .lg-feats{display:none;}
+      .lg-right{
+        order:1;width:100%;min-height:auto;box-shadow:none;background:transparent;
+        padding:0 20px;justify-content:center;
+      }
+      .lg-right-inner{max-width:440px;gap:14px;padding:36px 0 16px;}
+      /* Hide PC header, show mobile logo/caption */
+      .lg-right-brand,.lg-right-ttl,.lg-right-sub-txt{display:none;}
+      .lg-logo-mob{display:block;}
+      .lg-mob-caption{display:block;}
+      .lg-divider-mob{display:flex;}
+      /* Re-theme form for dark (glass) background */
+      .lg-form{background:rgba(255,255,255,.12);backdrop-filter:blur(20px);border-color:rgba(255,255,255,.22);}
+      .lg-input-lbl{color:rgba(255,255,255,.78);}
+      .lg-input{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:#fff;box-shadow:none;}
+      .lg-input:focus{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.2);box-shadow:none;}
+      .lg-input::placeholder{color:rgba(255,255,255,.42);}
+      .lg-btn{background:#fff;color:var(--primary-dk);}
+      .lg-btn:hover{background:#E3F2FD;box-shadow:0 6px 20px rgba(0,0,0,.2);}
+      .lg-forgot a{color:rgba(255,255,255,.65);}
+      .lg-forgot a:hover{color:#fff;}
+      .lg-divider{color:rgba(255,255,255,.42);}
+      .lg-divider::before,.lg-divider::after{background:rgba(255,255,255,.18);}
+      .demo-creds{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);width:100%;max-width:none;}
+      .demo-creds-ttl{color:rgba(255,255,255,.45);}
+      .demo-creds-pw{color:#90CAF9 !important;}
+      .demo-email{color:rgba(255,255,255,.9) !important;}
+      .demo-role-badge{filter:brightness(1.5) saturate(0.7);}
+      .demo-path{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16);width:100%;max-width:none;}
+      .demo-path-ttl{color:rgba(255,255,255,.45);}
+      .demo-path-desc{color:rgba(255,255,255,.72);}
+      .demo-path-num{background:rgba(255,255,255,.14);color:#90CAF9;}
+      /* Role cards: 2 columns on tablet/mobile */
+      .role-cards{max-width:none;gap:10px;}
+      .role-card{width:calc(50% - 6px);padding:18px 12px;min-width:130px;}
+      .role-card .rc-icon{width:44px;height:44px;font-size:20px;}
+      .role-card .rc-title{font-size:13px;}
+      .role-card .rc-desc{font-size:10.5px;}
     }
-    .lg-footer{margin-top:52px;color:rgba(255,255,255,.45);font-size:11px;position:relative;z-index:1;text-align:center;line-height:1.8;}
 
     /* ─── APP ─── */
     #app{display:none;flex-direction:column;min-height:100vh;}
@@ -456,7 +534,6 @@
       .stats-grid{grid-template-columns:repeat(2,1fr);}
       .det-grid{grid-template-columns:1fr;}
       .sidebar{width:200px;}
-      .role-card{width:calc(50% - 8px);max-width:240px;}
     }
 
     /* ── スマートフォン ── */
@@ -511,9 +588,10 @@
       /* stats-gridは2列を維持 */
       .stats-grid{grid-template-columns:repeat(2,1fr) !important;}
 
-      /* ロールカード：縦積み */
-      .role-cards{flex-direction:column;align-items:center;gap:10px;}
-      .role-card{width:85%;max-width:300px;padding:22px 18px;}
+      /* ロールカード：スマホは2列のまま（1023pxルール引き継ぎ） */
+      .role-card{min-width:120px;padding:16px 10px;}
+      .role-card .rc-title{font-size:12px;}
+      .role-card .rc-desc{font-size:10px;}
       .lg-form,.demo-creds-box{width:88%;max-width:340px;}
 
       /* 提案ページ hero パディング */
@@ -630,119 +708,156 @@
 
 <!-- ══ LOGIN ══ -->
 <div id="loginScreen">
-  <div class="lg-logo">
-    <div class="brand">Ly<em>-</em>Prum</div>
-    <div class="sub">BUSINESS CARD ORDER MANAGEMENT SYSTEM</div>
-  </div>
-  <div class="lg-caption">名刺発注管理システムにログイン</div>
 
-  <!-- Email / Password form -->
-  <div class="lg-form">
-    <div class="lg-input-wrap">
-      <label class="lg-input-lbl">メールアドレス</label>
-      <input class="lg-input" id="lgEmail" type="email" placeholder="example@company.co.jp" autocomplete="email">
+  <!-- ── LEFT: Branding + Role cards ── -->
+  <div class="lg-left">
+    <div class="lg-logo">
+      <div class="brand">Ly<em>-</em>Prum</div>
+      <div class="sub">BUSINESS CARD ORDER MANAGEMENT SYSTEM</div>
     </div>
-    <div class="lg-input-wrap">
-      <label class="lg-input-lbl">パスワード</label>
-      <input class="lg-input" id="lgPass" type="password" placeholder="••••••••" autocomplete="current-password"
-        onkeydown="if(event.key==='Enter')doLogin()">
-    </div>
-    <button class="lg-btn" onclick="doLogin()"><i class="fas fa-sign-in-alt" style="margin-right:6px"></i>ログイン</button>
-    <div class="lg-forgot"><a onclick="openForgot()">パスワードを忘れた方はこちら</a></div>
-  </div>
 
-  <!-- Demo credentials hint -->
-  <div class="demo-creds">
-    <div class="demo-creds-ttl">DEMO ACCOUNTS — パスワード共通: <span class="demo-creds-pw">demo1234</span></div>
-    <div class="demo-creds-list">
-      <div class="demo-creds-row">
-        <span class="demo-role-badge" style="background:rgba(46,125,50,.35);color:#a5d6a7">上層部</span>
-        <span class="demo-email">kanri@lifestage.co.jp</span>
-      </div>
-      <div class="demo-creds-row">
-        <span class="demo-role-badge" style="background:rgba(2,136,209,.3);color:#81d4fa">総務</span>
-        <span class="demo-email">soumu@lifestage.co.jp</span>
-      </div>
-      <div class="demo-creds-row">
-        <span class="demo-role-badge" style="background:rgba(2,136,209,.3);color:#81d4fa">スタッフ</span>
-        <span class="demo-email">yamada@lifestage.co.jp</span>
-      </div>
-      <div class="demo-creds-row">
-        <span class="demo-role-badge" style="background:rgba(156,39,176,.3);color:#E1BEE7">制作チーム</span>
-        <span class="demo-email">design@growthlink.co.jp</span>
-      </div>
-      <div class="demo-creds-row">
-        <span class="demo-role-badge" style="background:rgba(255,193,7,.25);color:#FFE082">営業</span>
-        <span class="demo-email">eigyo@growthlink.co.jp</span>
-      </div>
-      <div class="demo-creds-row">
-        <span class="demo-role-badge" style="background:rgba(0,172,193,.3);color:#80DEEA">GL管理者</span>
-        <span class="demo-email">manager@growthlink.co.jp</span>
-      </div>
+    <div class="lg-feats">
+      <div class="lg-feat"><i class="fas fa-magic"></i><span><strong>社員番号ひとつ</strong>で氏名・部署・住所を自動入力。手打ちミスゼロ。</span></div>
+      <div class="lg-feat"><i class="fas fa-route"></i><span><strong>5ステップ承認フロー</strong>で抜け漏れを防止。どこで止まっているか一目瞭然。</span></div>
+      <div class="lg-feat"><i class="fas fa-eye"></i><span><strong>リアルタイム名刺プレビュー</strong>で確認・承認まで完結。印刷前に安心校了。</span></div>
     </div>
-  </div>
 
-  <div class="lg-divider" style="width:min(500px,92vw);position:relative;z-index:1">または デモ用ワンクリックログイン</div>
+    <div class="lg-role-header">ワンクリックでデモを開始</div>
 
-  <div class="role-cards" style="margin-top:18px">
-    <div class="role-card" onclick="login('executive')" style="border:2px solid rgba(46,125,50,.55)">
-      <div class="rc-icon" style="background:rgba(46,125,50,.15)"><i class="fas fa-crown" style="color:#2E7D32"></i></div>
-      <div class="rc-title">管理者・上層部</div>
-      <div class="rc-desc">全社管理・権限設定・<br>ROI試算・数値管理</div>
-      <div class="rc-badge" style="background:rgba(46,125,50,.25);color:#a5d6a7">管理者</div>
+    <div class="role-cards">
+      <div class="role-card" onclick="login('executive')" style="border:2px solid rgba(46,125,50,.55)">
+        <div class="rc-icon" style="background:rgba(46,125,50,.18)"><i class="fas fa-crown" style="color:#66BB6A"></i></div>
+        <div class="rc-title">管理者・上層部</div>
+        <div class="rc-desc">全社管理・ROI試算<br>数値ダッシュボード</div>
+        <div class="rc-badge" style="background:rgba(46,125,50,.25);color:#a5d6a7">管理者</div>
+      </div>
+      <div class="role-card" onclick="login('admin')" style="border:2px solid rgba(2,136,209,.45)">
+        <div class="rc-icon" style="background:rgba(2,136,209,.18)"><i class="fas fa-user-shield" style="color:#42A5F5"></i></div>
+        <div class="rc-title">総務担当</div>
+        <div class="rc-desc">発注承認・校了<br>受発注業務メイン</div>
+        <div class="rc-badge" style="background:rgba(2,136,209,.2);color:#81d4fa">エンド側</div>
+      </div>
+      <div class="role-card" onclick="login('staff')" style="border:2px solid rgba(2,136,209,.45)">
+        <div class="rc-icon" style="background:rgba(2,136,209,.18)"><i class="fas fa-user" style="color:#42A5F5"></i></div>
+        <div class="rc-title">現場スタッフ</div>
+        <div class="rc-desc">名刺発注・プレビュー<br>確認・承認</div>
+        <div class="rc-badge" style="background:rgba(2,136,209,.2);color:#81d4fa">エンド側</div>
+      </div>
+      <div class="role-card" onclick="login('production')" style="border:2px solid rgba(156,39,176,.4)">
+        <div class="rc-icon" style="background:rgba(156,39,176,.2)"><i class="fas fa-palette" style="color:#CE93D8"></i></div>
+        <div class="rc-title">制作チーム</div>
+        <div class="rc-desc">データアップロード<br>進捗管理</div>
+        <div class="rc-badge" style="background:rgba(156,39,176,.22);color:#E1BEE7">制作側</div>
+      </div>
+      <div class="role-card" onclick="login('sales')" style="border:2px solid rgba(255,193,7,.38)">
+        <div class="rc-icon" style="background:rgba(255,193,7,.2)"><i class="fas fa-briefcase" style="color:#FFD54F"></i></div>
+        <div class="rc-title">営業 (Growth Link)</div>
+        <div class="rc-desc">提案アラート・受注<br>管理・ROI試算</div>
+        <div class="rc-badge" style="background:rgba(255,193,7,.2);color:#FFE082">営業側</div>
+      </div>
+      <div class="role-card" onclick="login('gl_manager')" style="border:2px solid rgba(0,172,193,.4)">
+        <div class="rc-icon" style="background:rgba(0,172,193,.15)"><i class="fas fa-chart-pie" style="color:#4DD0E1"></i></div>
+        <div class="rc-title">管理者 (Growth Link)</div>
+        <div class="rc-desc">受注KPI・取引先<br>管理・ビフォーアフター</div>
+        <div class="rc-badge" style="background:rgba(0,172,193,.2);color:#80DEEA">GL管理</div>
+      </div>
     </div>
-    <div class="role-card" onclick="login('admin')" style="border:2px solid rgba(2,136,209,.45)">
-      <div class="rc-icon" style="background:rgba(2,136,209,.13)"><i class="fas fa-user-shield" style="color:#0288D1"></i></div>
-      <div class="rc-title">総務担当</div>
-      <div class="rc-desc">発注承認・校了・<br>受発注業務メイン</div>
-      <div class="rc-badge" style="background:rgba(2,136,209,.2);color:#81d4fa">エンド側</div>
-    </div>
-    <div class="role-card" onclick="login('staff')" style="border:2px solid rgba(2,136,209,.45)">
-      <div class="rc-icon" style="background:rgba(2,136,209,.13)"><i class="fas fa-user" style="color:#0288D1"></i></div>
-      <div class="rc-title">現場スタッフ</div>
-      <div class="rc-desc">名刺発注・プレビュー<br>確認・承認</div>
-      <div class="rc-badge" style="background:rgba(2,136,209,.2);color:#81d4fa">エンド側</div>
-    </div>
-    <div class="role-card" onclick="login('production')" style="border:2px solid rgba(156,39,176,.4)">
-      <div class="rc-icon" style="background:rgba(156,39,176,.18)"><i class="fas fa-palette" style="color:#CE93D8"></i></div>
-      <div class="rc-title">制作チーム</div>
-      <div class="rc-desc">制作データのアップ<br>ロード・進捗管理</div>
-      <div class="rc-badge" style="background:rgba(156,39,176,.22);color:#E1BEE7">制作側</div>
-    </div>
-    <div class="role-card" onclick="login('sales')" style="border:2px solid rgba(255,193,7,.35)">
-      <div class="rc-icon" style="background:rgba(255,193,7,.18)"><i class="fas fa-briefcase" style="color:#FFD54F"></i></div>
-      <div class="rc-title">営業 (Growth Link)</div>
-      <div class="rc-desc">提案アラート・受注<br>管理・ROI試算</div>
-      <div class="rc-badge" style="background:rgba(255,193,7,.2);color:#FFE082">営業側</div>
-    </div>
-    <div class="role-card" onclick="login('gl_manager')" style="border:2px solid rgba(0,172,193,.4)">
-      <div class="rc-icon" style="background:rgba(0,172,193,.12)"><i class="fas fa-chart-pie" style="color:var(--accent)"></i></div>
-      <div class="rc-title">管理者 (Growth Link)</div>
-      <div class="rc-desc">受注KPI・取引先管理<br>営業実績・ビフォーアフター</div>
-      <div class="rc-badge" style="background:rgba(0,172,193,.18);color:#006064">GL管理</div>
-    </div>
-  </div>
-  <!-- 推奨デモルート -->
-  <div class="demo-path">
-    <div class="demo-path-ttl"><i class="fas fa-route"></i> おすすめデモ順（営業提案用）</div>
-    <div class="demo-path-step">
-      <div class="demo-path-num">1</div>
-      <div class="demo-path-desc"><span>管理者・上層部</span> → 経営ダッシュボード・先回り提案アラート・ROI試算</div>
-    </div>
-    <div class="demo-path-step">
-      <div class="demo-path-num">2</div>
-      <div class="demo-path-desc"><span>総務担当</span> → 発注一覧・案件詳細・名刺プレビュー・チェックリスト承認</div>
-    </div>
-    <div class="demo-path-step">
-      <div class="demo-path-num">3</div>
-      <div class="demo-path-desc"><span>営業 (Growth Link)</span> → Ly-Prumサービス紹介・ビフォーアフター比較表</div>
+
+    <div class="lg-footer">
+      © 2024 Ly-Prum — 想いをつなぐ、デジタルの絆<br>
+      Powered by Growth Link × Ly-Prum
     </div>
   </div>
 
-  <div class="lg-footer">
-    © 2024 Ly-Prum — 想いをつなぐ、デジタルの絆<br>
-    Powered by Growth Link × Ly-Prum
+  <!-- ── RIGHT: Login form (PC: white panel / Mobile: shown first) ── -->
+  <div class="lg-right">
+    <div class="lg-right-inner">
+
+      <!-- Mobile-only: logo + caption (hidden on PC) -->
+      <div class="lg-logo-mob">
+        <div class="brand">Ly<em>-</em>Prum</div>
+        <div class="sub">BUSINESS CARD ORDER MANAGEMENT SYSTEM</div>
+      </div>
+      <div class="lg-mob-caption">名刺発注管理システムにログイン</div>
+
+      <!-- PC-only: right panel header (hidden on mobile) -->
+      <div>
+        <div class="lg-right-brand">Ly<em>-</em>Prum</div>
+        <div class="lg-right-ttl">ログイン</div>
+        <div class="lg-right-sub-txt">アカウントにサインインしてください</div>
+      </div>
+
+      <!-- Login form -->
+      <div class="lg-form">
+        <div class="lg-form-inner">
+          <div class="lg-input-wrap">
+            <label class="lg-input-lbl">メールアドレス</label>
+            <input class="lg-input" id="lgEmail" type="email" placeholder="example@company.co.jp" autocomplete="email">
+          </div>
+          <div class="lg-input-wrap" style="margin-bottom:16px">
+            <label class="lg-input-lbl">パスワード</label>
+            <input class="lg-input" id="lgPass" type="password" placeholder="••••••••" autocomplete="current-password"
+              onkeydown="if(event.key==='Enter')doLogin()">
+          </div>
+          <button class="lg-btn" onclick="doLogin()"><i class="fas fa-sign-in-alt" style="margin-right:6px"></i>ログイン</button>
+          <div class="lg-forgot"><a onclick="openForgot()">パスワードを忘れた方はこちら</a></div>
+        </div>
+      </div>
+
+      <!-- Demo accounts -->
+      <div class="demo-creds">
+        <div class="demo-creds-ttl">DEMO ACCOUNTS — パスワード共通: <span class="demo-creds-pw">demo1234</span></div>
+        <div class="demo-creds-list">
+          <div class="demo-creds-row">
+            <span class="demo-role-badge" style="background:rgba(46,125,50,.12);color:#2E7D32;border:1px solid rgba(46,125,50,.25)">上層部</span>
+            <span class="demo-email">kanri@lifestage.co.jp</span>
+          </div>
+          <div class="demo-creds-row">
+            <span class="demo-role-badge" style="background:rgba(21,101,192,.1);color:#1565C0;border:1px solid rgba(21,101,192,.2)">総務</span>
+            <span class="demo-email">soumu@lifestage.co.jp</span>
+          </div>
+          <div class="demo-creds-row">
+            <span class="demo-role-badge" style="background:rgba(21,101,192,.1);color:#1565C0;border:1px solid rgba(21,101,192,.2)">スタッフ</span>
+            <span class="demo-email">yamada@lifestage.co.jp</span>
+          </div>
+          <div class="demo-creds-row">
+            <span class="demo-role-badge" style="background:rgba(106,27,154,.1);color:#6A1B9A;border:1px solid rgba(106,27,154,.2)">制作チーム</span>
+            <span class="demo-email">design@growthlink.co.jp</span>
+          </div>
+          <div class="demo-creds-row">
+            <span class="demo-role-badge" style="background:rgba(230,81,0,.1);color:#E65100;border:1px solid rgba(230,81,0,.2)">営業</span>
+            <span class="demo-email">eigyo@growthlink.co.jp</span>
+          </div>
+          <div class="demo-creds-row">
+            <span class="demo-role-badge" style="background:rgba(0,131,143,.1);color:#00838F;border:1px solid rgba(0,131,143,.2)">GL管理者</span>
+            <span class="demo-email">manager@growthlink.co.jp</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommended demo path -->
+      <div class="demo-path">
+        <div class="demo-path-ttl"><i class="fas fa-route"></i> おすすめデモ順（営業提案用）</div>
+        <div class="demo-path-step">
+          <div class="demo-path-num">1</div>
+          <div class="demo-path-desc"><span>管理者・上層部</span> → 経営ダッシュボード・先回りアラート・ROI試算</div>
+        </div>
+        <div class="demo-path-step">
+          <div class="demo-path-num">2</div>
+          <div class="demo-path-desc"><span>総務担当</span> → 発注一覧・案件詳細・名刺プレビュー・承認</div>
+        </div>
+        <div class="demo-path-step">
+          <div class="demo-path-num">3</div>
+          <div class="demo-path-desc"><span>営業 (Growth Link)</span> → Ly-Prumサービス紹介・ビフォーアフター</div>
+        </div>
+      </div>
+
+      <!-- Mobile-only: divider leading to role cards below -->
+      <div class="lg-divider lg-divider-mob">または デモ用ワンクリックログイン</div>
+
+    </div>
   </div>
+
 </div>
 
 <!-- Forgot Password Modal -->
