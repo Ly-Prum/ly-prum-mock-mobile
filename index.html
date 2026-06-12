@@ -579,6 +579,37 @@
     .client-item:hover{background:var(--primary-50);}
     .client-item.sel{background:var(--primary-50);border-left-color:var(--primary);}
     .client-item:last-child{border-bottom:none;}
+
+    /* ── デモガイドバナー ── */
+    .demo-guide{background:linear-gradient(90deg,#0D47A1 0%,#1565C0 100%);color:#fff;padding:9px 16px;font-size:11.5px;display:flex;align-items:center;gap:10px;position:sticky;top:62px;z-index:190;border-bottom:1px solid rgba(255,255,255,.12);}
+    .dg-icon{font-size:16px;color:#90CAF9;flex-shrink:0;}
+    .dg-label{font-size:9px;font-weight:800;letter-spacing:1.5px;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:1px;}
+    .dg-text{flex:1;line-height:1.5;}
+    .dg-text strong{color:#90CAF9;}
+    .dg-text em{color:#80DEEA;font-style:normal;font-weight:700;}
+    .dg-close{background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;font-size:14px;padding:0;flex-shrink:0;line-height:1;transition:color .15s;}
+    .dg-close:hover{color:rgba(255,255,255,.8);}
+
+    /* 統計トレンド */
+    .stat-trend{font-size:10px;font-weight:700;margin-top:4px;}
+    .stat-trend.up{color:var(--success);}
+    .stat-trend.dn{color:var(--warning);}
+    .stat-trend.neu{color:var(--txt-3);}
+
+    /* ログイン推奨デモルート */
+    .demo-path{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:16px 20px;width:340px;position:relative;z-index:1;margin-top:14px;}
+    .demo-path-ttl{font-size:9.5px;font-weight:800;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+    .demo-path-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;}
+    .demo-path-step:last-child{margin-bottom:0;}
+    .demo-path-num{width:19px;height:19px;border-radius:50%;background:rgba(255,255,255,.14);color:#90CAF9;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;margin-top:1px;}
+    .demo-path-desc{font-size:11.5px;color:rgba(255,255,255,.78);line-height:1.55;}
+    .demo-path-desc span{color:#90CAF9;font-weight:700;}
+
+    /* 画面内バリューカード */
+    .value-callout{background:linear-gradient(90deg,var(--primary-50) 0%,#E0F7FA 100%);border:1px solid var(--primary-100);border-left:4px solid var(--primary);border-radius:var(--r-sm);padding:12px 16px;margin-bottom:18px;display:flex;align-items:flex-start;gap:10px;}
+    .value-callout i{color:var(--primary);margin-top:2px;flex-shrink:0;font-size:14px;}
+    .value-callout-text{font-size:12px;color:var(--txt-2);line-height:1.7;}
+    .value-callout-text strong{color:var(--primary);}
   </style>
 </head>
 <body>
@@ -677,6 +708,23 @@
       <div class="rc-badge" style="background:rgba(0,172,193,.18);color:#006064">GL管理</div>
     </div>
   </div>
+  <!-- 推奨デモルート -->
+  <div class="demo-path">
+    <div class="demo-path-ttl"><i class="fas fa-route"></i> おすすめデモ順（営業提案用）</div>
+    <div class="demo-path-step">
+      <div class="demo-path-num">1</div>
+      <div class="demo-path-desc"><span>管理者・上層部</span> → 経営ダッシュボード・先回り提案アラート・ROI試算</div>
+    </div>
+    <div class="demo-path-step">
+      <div class="demo-path-num">2</div>
+      <div class="demo-path-desc"><span>総務担当</span> → 発注一覧・案件詳細・名刺プレビュー・チェックリスト承認</div>
+    </div>
+    <div class="demo-path-step">
+      <div class="demo-path-num">3</div>
+      <div class="demo-path-desc"><span>営業 (Growth Link)</span> → Ly-Prumサービス紹介・ビフォーアフター比較表</div>
+    </div>
+  </div>
+
   <div class="lg-footer">
     © 2024 Ly-Prum — 想いをつなぐ、デジタルの絆<br>
     Powered by Growth Link × Ly-Prum
@@ -759,6 +807,16 @@
     <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i><span> ログアウト</span></button>
   </div>
 
+  <!-- デモガイドバナー -->
+  <div class="demo-guide" id="demoGuide">
+    <i class="fas fa-map-marked-alt dg-icon"></i>
+    <div class="dg-text">
+      <div class="dg-label">Demo Guide — 今の画面のポイント</div>
+      <div id="demoGuideMsg">ダッシュボードで今月の発注状況を確認。<strong>「対応する」ボタン</strong>で案件詳細へ直接遷移できます。</div>
+    </div>
+    <button class="dg-close" onclick="document.getElementById('demoGuide').style.display='none'" title="ガイドを閉じる"><i class="fas fa-times"></i></button>
+  </div>
+
   <!-- Layout -->
   <div class="layout">
     <!-- Sidebar -->
@@ -833,18 +891,22 @@
           <div class="stat">
             <div class="stat-ico"><i class="fas fa-file-alt"></i></div>
             <div class="stat-val">11</div><div class="stat-lbl">今月の発注件数</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up" style="font-size:8px"></i> 前月比 +18%</div>
           </div>
           <div class="stat warn">
             <div class="stat-ico"><i class="fas fa-hourglass-half"></i></div>
             <div class="stat-val">2</div><div class="stat-lbl">承認待ち</div>
+            <div class="stat-trend dn"><i class="fas fa-exclamation-circle" style="font-size:8px"></i> 要対応あり</div>
           </div>
           <div class="stat ok">
             <div class="stat-ico"><i class="fas fa-check-double"></i></div>
             <div class="stat-val">8</div><div class="stat-lbl">今月完了</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up" style="font-size:8px"></i> 前月比 +33%</div>
           </div>
           <div class="stat hi">
             <div class="stat-ico"><i class="fas fa-star"></i></div>
             <div class="stat-val">98%</div><div class="stat-lbl">品質スコア</div>
+            <div class="stat-trend neu"><i class="fas fa-shield-alt" style="font-size:8px"></i> 4ヶ月連続 95%超</div>
           </div>
         </div>
 
@@ -876,7 +938,7 @@
         <div class="pg-head">
           <div>
             <div class="pg-title">発注一覧</div>
-            <div class="pg-sub">全案件の進捗を管理します</div>
+            <div class="pg-sub">ステータス・部署・担当者でフィルタ — 必要な案件をすぐ見つける</div>
           </div>
           <button class="btn btn-primary" id="btnNewOrders" onclick="goTo('new')"><i class="fas fa-plus"></i> 新規発注</button>
         </div>
@@ -1069,6 +1131,13 @@
               <div class="pg-title">新規発注</div>
               <div class="pg-sub">名刺の新規発注フォーム</div>
             </div>
+          </div>
+        </div>
+
+        <div class="value-callout">
+          <i class="fas fa-magic"></i>
+          <div class="value-callout-text">
+            <strong>社員番号を入力するだけで自動入力。</strong>氏名・部署・役職・住所がマスタから瞬時に反映されます。手入力ミスや二重登録はもう起きません。
           </div>
         </div>
 
@@ -1558,7 +1627,7 @@
         <div class="pg-head">
           <div>
             <div class="pg-title"><i class="fas fa-crown" style="color:#FFD700"></i> 経営管理ダッシュボード</div>
-            <div class="pg-sub">ライフステージ株式会社 — 上層部向け統合管理画面</div>
+            <div class="pg-sub">コスト・納期・品質を一目で把握 — 先回りアラートで問題をゼロに</div>
           </div>
           <button class="btn btn-primary" onclick="goTo('roi')"><i class="fas fa-calculator"></i> ROI・効果を試算</button>
         </div>
@@ -1824,7 +1893,7 @@
         <div class="pg-head">
           <div>
             <div class="pg-title">離職者管理</div>
-            <div class="pg-sub">離職者データの管理・制作チームへのデータ削除依頼</div>
+            <div class="pg-sub">退職者の名刺在庫・回収状況を追跡 — 情報漏洩リスクを見える化</div>
           </div>
         </div>
 
@@ -1860,7 +1929,7 @@
         <div class="pg-head">
           <div>
             <div class="pg-title">システム設定</div>
-            <div class="pg-sub">ユーザー権限・拠点・通知の管理（編集可能範囲はログイン権限に依存）</div>
+            <div class="pg-sub">承認フロー・権限・通知ルールを御社の運用に合わせて設定</div>
           </div>
           <button class="btn btn-primary" onclick="toast('設定を保存しました','ok')"><i class="fas fa-save"></i> 保存</button>
         </div>
@@ -2055,7 +2124,7 @@
         <div class="pg-head">
           <div>
             <div class="pg-title">CSV 入出力</div>
-            <div class="pg-sub">発注データのインポート・エクスポートを行います</div>
+            <div class="pg-sub">既存の社員台帳をそのまま取り込み — 100名分も数秒で一括登録</div>
           </div>
         </div>
 
@@ -2158,7 +2227,7 @@
         <div class="pg-head">
           <div>
             <div class="pg-title"><i class="fas fa-chart-line" style="color:var(--success)"></i> 効果・ROI試算</div>
-            <div class="pg-sub">Ly-Prum 導入による業務効率化・コスト削減効果を試算します</div>
+            <div class="pg-sub">現状の数字を入れるだけ — 導入後の削減効果を自動試算</div>
           </div>
           <button class="btn btn-primary" onclick="exportRoiPdf()"><i class="fas fa-file-pdf"></i> 提案書を出力</button>
         </div>
@@ -2621,6 +2690,23 @@ function closeNav() {
 }
 
 // ══ NAV ══
+const DEMO_MSGS = {
+  'dash':      'ダッシュボードで今月の発注状況を一目確認。<strong>「対応する」ボタン</strong>で案件詳細へ直接遷移できます。承認待ち件数がリアルタイムで表示されます。',
+  'orders':    '発注一覧では<strong>ステータス・部署・担当者</strong>でフィルタ可能。任意の案件をタップすると詳細・プレビュー・承認チェックリストが表示されます。',
+  'det':       '案件詳細では名刺デザインの<strong>リアルタイムプレビュー</strong>と承認チェックリストを確認できます。コメント機能で担当者間の連絡もここで完結します。',
+  'new':       '新規発注フォームはたった<strong>4ステップ</strong>。住所・役職は社員マスタから自動入力されるため、入力ミスが大幅に減ります。',
+  'master':    '社員マスタを一元管理。<strong>異動・昇格時の情報更新</strong>がここで完結し、次回発注時に自動反映されます。',
+  'retire':    '離職者管理では退職社員の名刺在庫・回収状況を追跡。<strong>情報漏洩リスクの見える化</strong>が可能です。',
+  'csv':       'CSVインポートで<strong>100名分の一括登録</strong>も数秒で完了。既存の社員台帳をそのまま取り込めます。',
+  'settings':  'システム設定では承認フロー・権限・通知ルールをカスタマイズ。<strong>ワークフローを御社の運用に合わせて</strong>調整できます。',
+  'exec':      '経営ダッシュボードでは<strong>コスト・納期・品質</strong>をKPIとして可視化。先回りアラートで問題を事前にキャッチできます。',
+  'roi':       'ROI試算ツール。<strong>現状の工数・コストを入力</strong>するだけで、Ly-Prum導入後の削減効果を自動計算します。',
+  'proposal':  'Ly-Prum サービス紹介。<strong>ビフォーアフター比較表</strong>と導入ロードマップで提案の説得力を高めます。',
+  'sales':     '受注管理ダッシュボード。<strong>顧客ごとの売上・進捗・アクション履歴</strong>を一元管理できます。',
+  'prod':      '制作管理ダッシュボード。<strong>デザイン・校正・印刷</strong>の各フェーズをリアルタイムで把握できます。',
+  'gl-manager':'Growth Link管理画面。<strong>取引先別の受注状況とKPI</strong>を一元確認できます。',
+};
+
 function goTo(v) {
   closeNav(); // スマホでメニュー選択後にドロワーを閉じる
   prevView = curView !== 'det' ? curView : prevView;
@@ -2638,6 +2724,13 @@ function goTo(v) {
   if (v === 'sales') renderSalesDash();
   if (v === 'gl-manager') renderSalesDash();
   if (v === 'new' && !arguments[1]) document.querySelector('#view-new .pg-sub').textContent = '名刺の新規発注フォーム';
+  // Demo guide update
+  const guide = document.getElementById('demoGuide');
+  const msg = document.getElementById('demoGuideMsg');
+  if (guide && msg && DEMO_MSGS[v]) {
+    msg.innerHTML = DEMO_MSGS[v];
+    guide.style.display = 'flex';
+  }
 }
 function goBack() { goTo(prevView); }
 
