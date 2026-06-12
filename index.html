@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ly-Prum | 名刺発注管理システム — for Growth Link</title>
+  <title>Ly-Prum | 名刺発注管理 — スマホ版</title>
+  <meta name="theme-color" content="#1565C0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
@@ -702,6 +705,103 @@
     .value-callout i{color:var(--primary);margin-top:2px;flex-shrink:0;font-size:14px;}
     .value-callout-text{font-size:12px;color:var(--txt-2);line-height:1.7;}
     .value-callout-text strong{color:var(--primary);}
+
+    /* ══════════════════════════════
+       MOBILE-ONLY OVERRIDES
+       (mobile.html 専用 — PCレイアウト無効化)
+    ══════════════════════════════ */
+
+    /* ── ログイン画面：常に縦積み ── */
+    #loginScreen{flex-direction:column!important;overflow-y:auto!important;}
+    #loginScreen::before,#loginScreen::after{display:none!important;}
+    .lg-left{order:2!important;flex:none!important;width:100%!important;min-height:auto!important;justify-content:flex-start!important;padding:16px 20px 48px!important;gap:16px!important;}
+    .lg-logo{display:none!important;}
+    .lg-feats{display:none!important;}
+    .lg-right{order:1!important;width:100%!important;min-height:auto!important;box-shadow:none!important;background:transparent!important;padding:0 20px!important;}
+    .lg-right-inner{max-width:420px!important;margin:0 auto!important;gap:14px!important;padding:36px 0 16px!important;}
+    .lg-right-brand,.lg-right-ttl,.lg-right-sub-txt{display:none!important;}
+    .lg-logo-mob{display:block!important;}
+    .lg-mob-caption{display:block!important;}
+    .lg-divider-mob{display:flex!important;}
+    .lg-form{background:rgba(255,255,255,.12)!important;backdrop-filter:blur(20px)!important;border-color:rgba(255,255,255,.22)!important;}
+    .lg-input-lbl{color:rgba(255,255,255,.78)!important;}
+    .lg-input{background:rgba(255,255,255,.14)!important;border-color:rgba(255,255,255,.28)!important;color:#fff!important;box-shadow:none!important;}
+    .lg-input:focus{border-color:rgba(255,255,255,.7)!important;background:rgba(255,255,255,.2)!important;box-shadow:none!important;}
+    .lg-input::placeholder{color:rgba(255,255,255,.42)!important;}
+    .lg-btn{background:#fff!important;color:var(--primary-dk)!important;}
+    .lg-forgot a{color:rgba(255,255,255,.65)!important;}
+    .lg-forgot a:hover{color:#fff!important;}
+    .lg-divider{color:rgba(255,255,255,.42)!important;}
+    .lg-divider::before,.lg-divider::after{background:rgba(255,255,255,.18)!important;}
+    .demo-creds{background:rgba(255,255,255,.1)!important;border-color:rgba(255,255,255,.18)!important;width:100%!important;max-width:none!important;}
+    .demo-creds-ttl{color:rgba(255,255,255,.45)!important;}
+    .demo-creds-pw{color:#90CAF9!important;}
+    .demo-email{color:rgba(255,255,255,.88)!important;}
+    .demo-role-badge{filter:brightness(1.55) saturate(0.65);}
+    .demo-path{background:rgba(255,255,255,.07)!important;border-color:rgba(255,255,255,.16)!important;width:100%!important;max-width:none!important;}
+    .demo-path-ttl{color:rgba(255,255,255,.45)!important;}
+    .demo-path-desc{color:rgba(255,255,255,.72)!important;}
+    .demo-path-num{background:rgba(255,255,255,.14)!important;color:#90CAF9!important;}
+    .role-cards{gap:10px!important;}
+    .role-card{width:calc(50% - 6px)!important;padding:18px 10px!important;min-width:130px!important;}
+    .role-card .rc-icon{width:44px!important;height:44px!important;font-size:20px!important;}
+    .role-card .rc-title{font-size:13px!important;}
+    .role-card .rc-desc{font-size:10.5px!important;}
+
+    /* ── アプリ：常にモバイルレイアウト ── */
+    .h-menu-btn{display:flex!important;}
+    .h-sysname,.h-div{display:none!important;}
+    .sidebar{
+      position:fixed!important;left:-260px!important;top:0;bottom:0;
+      width:240px!important;z-index:295;overflow-y:auto;
+      transition:left .25s ease;box-shadow:none;
+    }
+    .sidebar.nav-open{left:0!important;box-shadow:4px 0 24px rgba(0,0,0,.2)!important;}
+    .content{padding:12px!important;padding-bottom:74px!important;}
+    .stats-grid{grid-template-columns:repeat(2,1fr)!important;gap:10px!important;}
+    .stat-val{font-size:22px!important;}
+    .det-grid{grid-template-columns:1fr!important;}
+    .pg-title{font-size:18px!important;}
+    .pg-head{flex-direction:column!important;align-items:flex-start!important;gap:10px!important;}
+    /* インライングリッドを全て1列に */
+    [style*="grid-template-columns:1fr 330px"],[style*="grid-template-columns: 1fr 330px"]{grid-template-columns:1fr!important;}
+
+    /* ── ボトムタブナビ ── */
+    .btm-tabs{
+      position:fixed;bottom:0;left:0;right:0;height:58px;
+      background:#fff;border-top:1.5px solid var(--border);
+      display:none;z-index:280;
+      box-shadow:0 -4px 20px rgba(0,0,0,.09);
+      padding-bottom:env(safe-area-inset-bottom);
+    }
+    .btm-tabs.visible{display:flex;}
+    .btm-tab{
+      flex:1;display:flex;flex-direction:column;align-items:center;
+      justify-content:center;gap:3px;cursor:pointer;
+      color:var(--txt-3);font-size:10px;font-weight:700;
+      transition:color .15s;border:none;background:none;
+      padding:6px 4px 8px;position:relative;
+    }
+    .btm-tab i{font-size:21px;transition:transform .15s;}
+    .btm-tab.btm-active{color:var(--primary);}
+    .btm-tab.btm-active i{transform:scale(1.1);}
+    .btm-tab.btm-new-tab{padding:0;position:relative;}
+    .btm-new-pill{
+      width:48px;height:48px;border-radius:50%;
+      background:var(--primary);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 4px 16px rgba(21,101,192,.42);
+      margin-top:-18px;transition:all .2s;
+    }
+    .btm-tab.btm-new-tab:hover .btm-new-pill{background:var(--primary-dk);transform:scale(1.06);}
+    .btm-tab.btm-active.btm-new-tab .btm-new-pill{background:var(--primary-dk);}
+    .btm-badge{
+      position:absolute;top:3px;right:calc(50% - 20px);
+      width:15px;height:15px;border-radius:50%;
+      background:var(--danger);color:#fff;font-size:8px;font-weight:800;
+      display:flex;align-items:center;justify-content:center;
+      border:1.5px solid #fff;
+    }
   </style>
 </head>
 <body>
@@ -4037,5 +4137,110 @@ calcRoi();
     </div>
   </div>
 </div>
+
+<!-- ══ ボトムタブナビ (mobile.html専用) ══ -->
+<nav class="btm-tabs" id="btmTabs">
+  <button class="btm-tab btm-active" id="btab-home" onclick="mobileGoHome()">
+    <i class="fas fa-th-large"></i>ホーム
+  </button>
+  <button class="btm-tab" id="btab-orders" onclick="mobileGoOrders()">
+    <i class="fas fa-list-alt"></i>
+    <span class="btm-badge" id="btmBadge" style="display:none">2</span>
+    一覧
+  </button>
+  <button class="btm-tab btm-new-tab" id="btab-new" onclick="goTo('new');mobileSetActive('new')">
+    <div class="btm-new-pill"><i class="fas fa-plus" style="color:#fff;font-size:20px"></i></div>
+    <span style="font-size:10px;font-weight:700;color:var(--txt-3);margin-top:2px">新規</span>
+  </button>
+  <button class="btm-tab" id="btab-special" onclick="mobileGoSpecial()" style="display:none">
+    <i class="fas fa-calculator" id="btab-special-icon"></i>
+    <span id="btab-special-lbl">ROI</span>
+  </button>
+  <button class="btm-tab" id="btab-menu" onclick="openNav()">
+    <i class="fas fa-ellipsis-h"></i>メニュー
+  </button>
+</nav>
+
+<script>
+/* ══ Mobile bottom tab JS ══ */
+const MOB_HOME = {
+  admin:'dash', staff:'dash', executive:'exec',
+  production:'prod', sales:'sales', gl_manager:'gl-manager'
+};
+const MOB_SPECIAL = {
+  executive:{icon:'fa-chart-line',lbl:'ROI',view:'roi'},
+  gl_manager:{icon:'fa-chart-line',lbl:'ROI',view:'roi'},
+  sales:{icon:'fa-handshake',lbl:'提案',view:'proposal'},
+};
+
+function mobileSetActive(v) {
+  document.querySelectorAll('.btm-tab').forEach(t => t.classList.remove('btm-active'));
+  const map = {
+    dash:'btab-home',exec:'btab-home',prod:'btab-home',sales:'btab-home','gl-manager':'btab-home',
+    orders:'btab-orders',det:'btab-orders',
+    new:'btab-new',
+    roi:'btab-special',proposal:'btab-special',
+  };
+  const id = map[v] || 'btab-home';
+  const el = document.getElementById(id);
+  if (el) el.classList.add('btm-active');
+}
+
+function mobileGoHome() {
+  const r = typeof role !== 'undefined' ? role : 'admin';
+  const v = MOB_HOME[r] || 'dash';
+  goTo(v); mobileSetActive(v);
+}
+
+function mobileGoOrders() {
+  const r = typeof role !== 'undefined' ? role : 'admin';
+  const ordView = (r==='production') ? 'orders' : 'orders';
+  goTo(ordView); mobileSetActive(ordView);
+}
+
+function mobileGoSpecial() {
+  const r = typeof role !== 'undefined' ? role : 'executive';
+  const cfg = MOB_SPECIAL[r];
+  if (cfg) { goTo(cfg.view); mobileSetActive(cfg.view); }
+}
+
+function mobileSetupTabs(r) {
+  const btmTabs = document.getElementById('btmTabs');
+  btmTabs.classList.add('visible');
+  // Badge
+  const badge = document.getElementById('btmBadge');
+  if (badge) badge.style.display = (r==='admin'||r==='executive') ? 'flex' : 'none';
+  // 新規ボタン
+  const tabNew = document.getElementById('btab-new');
+  const noNew = ['executive','production','sales','gl_manager'];
+  if (tabNew) tabNew.style.display = noNew.includes(r) ? 'none' : 'flex';
+  // スペシャルタブ
+  const tabSpecial = document.getElementById('btab-special');
+  const cfg = MOB_SPECIAL[r];
+  if (tabSpecial) {
+    tabSpecial.style.display = cfg ? 'flex' : 'none';
+    if (cfg) {
+      document.getElementById('btab-special-icon').className = 'fas ' + cfg.icon;
+      document.getElementById('btab-special-lbl').textContent = cfg.lbl;
+    }
+  }
+  // メニュータブを右端に保つため新規非表示時はflexを調整済み
+}
+
+/* 既存 login() / goTo() を拡張 */
+const _origLogin = login;
+login = function(r) {
+  _origLogin(r);
+  mobileSetupTabs(r);
+  mobileSetActive(MOB_HOME[r] || 'dash');
+};
+
+const _origGoTo = goTo;
+goTo = function(v) {
+  _origGoTo(v);
+  mobileSetActive(v);
+};
+</script>
+
 </body>
 </html>
