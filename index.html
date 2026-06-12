@@ -766,6 +766,31 @@
     /* インライングリッドを全て1列に */
     [style*="grid-template-columns:1fr 330px"],[style*="grid-template-columns: 1fr 330px"]{grid-template-columns:1fr!important;}
 
+    /* ── PCブラウザで開いたとき：アプリを430px幅に制限 ── */
+    @media(min-width:600px){
+      body{background:#e8ecf0;}
+      #app{
+        max-width:430px!important;
+        margin:0 auto!important;
+        box-shadow:0 0 60px rgba(0,0,0,.22)!important;
+        min-height:100vh;
+        position:relative;
+      }
+      .sidebar{
+        left:calc((100vw - 430px)/2 - 240px)!important;
+      }
+      .sidebar.nav-open{
+        left:calc((100vw - 430px)/2)!important;
+      }
+      .btm-tabs{
+        max-width:430px!important;
+        left:50%!important;
+        right:auto!important;
+        transform:translateX(-50%)!important;
+      }
+      .sidebar-ov{max-width:100vw;}
+    }
+
     /* ── ボトムタブナビ ── */
     .btm-tabs{
       position:fixed;bottom:0;left:0;right:0;height:58px;
