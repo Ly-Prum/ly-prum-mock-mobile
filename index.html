@@ -667,14 +667,13 @@
     .client-item:last-child{border-bottom:none;}
 
     /* ── デモガイドバナー ── */
-    .demo-guide{background:linear-gradient(90deg,#0A3880 0%,#1565C0 60%,#1976D2 100%);color:#fff;padding:10px 20px;font-size:12px;display:flex;align-items:center;gap:12px;position:sticky;top:62px;z-index:190;border-bottom:2px solid rgba(255,255,255,.08);box-shadow:0 2px 12px rgba(13,71,161,.35);}
-    .dg-icon{font-size:17px;color:#90CAF9;flex-shrink:0;}
-    .dg-label{font-size:9px;font-weight:800;letter-spacing:1.8px;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:2px;}
-    .dg-text{flex:1;line-height:1.55;}
-    .dg-text strong{color:#BBDEFB;font-weight:800;}
+    .demo-guide{background:#1565C0;color:#fff;padding:8px 14px;font-size:12px;display:flex;align-items:center;gap:10px;position:sticky;top:62px;z-index:190;border-bottom:1px solid rgba(255,255,255,.12);}
+    .dg-icon{font-size:14px;color:#90CAF9;flex-shrink:0;}
+    .dg-label{display:none;}
+    .dg-text{flex:1;line-height:1.4;font-size:12px;color:rgba(255,255,255,.9);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .dg-text strong{color:#BBDEFB;font-weight:700;}
     .dg-text em{color:#80DEEA;font-style:normal;font-weight:700;}
-    .dg-close{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50%;width:24px;height:24px;color:rgba(255,255,255,.55);cursor:pointer;font-size:11px;padding:0;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-    .dg-close:hover{background:rgba(255,255,255,.18);color:#fff;}
+    .dg-close{background:rgba(255,255,255,.1);border:none;border-radius:50%;width:22px;height:22px;color:rgba(255,255,255,.6);cursor:pointer;font-size:10px;padding:0;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
 
     /* 統計トレンド */
     .stat-trend{font-size:9.5px;font-weight:700;margin-top:6px;display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;width:fit-content;}
@@ -770,9 +769,6 @@
     html,body{overflow-x:hidden;max-width:100vw;}
     .tbl-wrap{overflow-x:auto!important;}
     .card-b{overflow-x:auto!important;}
-    /* 発注一覧・ダッシュボード：モバイルカード表示のためtheadを非表示 */
-    #view-orders .tbl-wrap table thead{display:none!important;}
-    #view-dash .card-b table thead{display:none!important;}
     /* ステップバー：サブテキストを非表示にしてスッキリ */
     .step-sub{display:none!important;}
     .step-lbl{font-size:9px!important;margin-top:5px!important;}
@@ -1192,14 +1188,7 @@
             <i class="fas fa-history" style="color:var(--primary)"></i> 最近の発注
             <span onclick="goTo('orders')" style="margin-left:auto;font-size:11px;color:var(--primary);cursor:pointer;font-weight:600">すべて見る →</span>
           </div>
-          <div class="card-b" style="padding:0">
-            <table>
-              <thead><tr>
-                <th>社員名</th><th>部署・役職</th><th>発注日</th><th>優先度</th><th>ステータス</th><th>操作</th>
-              </tr></thead>
-              <tbody id="dashTbody"></tbody>
-            </table>
-          </div>
+          <div id="dashTbody"></div>
         </div>
       </div>
 
@@ -1242,12 +1231,7 @@
             </select>
             <span id="fltSalesCount" style="font-size:11px;color:var(--txt-3)"></span>
           </div>
-          <table>
-            <thead><tr>
-              <th>案件ID</th><th>社員名</th><th>部署・役職</th><th>発注日</th><th>枚数</th><th>優先度</th><th>回次</th><th>ステータス</th><th>操作</th>
-            </tr></thead>
-            <tbody id="ordTbody"></tbody>
-          </table>
+          <div id="ordTbody"></div>
         </div>
       </div>
 
@@ -1589,14 +1573,7 @@
             <span id="prodActBadge" style="margin-left:8px;background:var(--warning);color:white;font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px"></span>
             <span style="margin-left:auto;font-size:11px;color:var(--txt-3)">クリックで詳細・対応ページへ</span>
           </div>
-          <div class="card-b" style="padding:0">
-            <table>
-              <thead><tr>
-                <th>案件ID</th><th>社員名</th><th>部署・役職</th><th>発注日</th><th>優先度</th><th>回次</th><th>ステータス</th><th>操作</th>
-              </tr></thead>
-              <tbody id="prodActTbody"></tbody>
-            </table>
-          </div>
+          <div id="prodActTbody"></div>
         </div>
 
         <!-- 最近の完了案件 -->
@@ -1604,14 +1581,7 @@
           <div class="card-h">
             <i class="fas fa-history" style="color:var(--primary)"></i> 最近の完了案件
           </div>
-          <div class="card-b" style="padding:0">
-            <table>
-              <thead><tr>
-                <th>案件ID</th><th>社員名</th><th>部署・役職</th><th>発注日</th><th>回次</th><th>ステータス</th>
-              </tr></thead>
-              <tbody id="prodDoneTbody"></tbody>
-            </table>
-          </div>
+          <div id="prodDoneTbody"></div>
         </div>
       </div>
 
@@ -1832,29 +1802,50 @@
         <div class="prop-sub">「こうすれば変わる」を数字と図で示すことで、経営層・発注部門の意思決定を加速します</div>
         <div class="card" style="margin-bottom:28px">
           <div style="padding:0">
-          <table style="width:100%;font-size:13px;border-collapse:collapse">
-            <thead>
-              <tr>
-                <th style="padding:10px 16px;text-align:left;width:26%;color:var(--txt-2);font-weight:600;border-bottom:2px solid var(--border)">業務項目</th>
-                <th style="padding:10px 16px;text-align:center;background:var(--danger-lt);color:var(--danger);font-weight:700;border-bottom:2px solid var(--danger)"><i class="fas fa-times-circle"></i> 従来の方法</th>
-                <th style="padding:10px 16px;text-align:center;background:var(--success-lt);color:var(--success);font-weight:700;border-bottom:2px solid var(--success)"><i class="fas fa-check-circle"></i> DX化後（Ly-Prum提案）</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td style="padding:11px 16px;font-weight:600;color:var(--txt-2);border-bottom:1px solid var(--border)">発注方法</td><td style="padding:11px 16px;text-align:center;color:var(--danger);background:var(--danger-lt);border-bottom:1px solid var(--border)">メール・FAX・電話で個別対応</td><td style="padding:11px 16px;text-align:center;color:var(--success);background:var(--success-lt);border-bottom:1px solid var(--border);font-weight:600">システムからワンストップ入力</td></tr>
-              <tr><td style="padding:11px 16px;font-weight:600;color:var(--txt-2);border-bottom:1px solid var(--border)">1件の処理時間</td><td style="padding:11px 16px;text-align:center;color:var(--danger);background:var(--danger-lt);border-bottom:1px solid var(--border)">平均 <b>45分</b></td><td style="padding:11px 16px;text-align:center;color:var(--success);background:var(--success-lt);border-bottom:1px solid var(--border);font-weight:600">平均 <b>8分</b>（83%削減）</td></tr>
-              <tr><td style="padding:11px 16px;font-weight:600;color:var(--txt-2);border-bottom:1px solid var(--border)">進捗確認</td><td style="padding:11px 16px;text-align:center;color:var(--danger);background:var(--danger-lt);border-bottom:1px solid var(--border)">電話・メールで都度確認</td><td style="padding:11px 16px;text-align:center;color:var(--success);background:var(--success-lt);border-bottom:1px solid var(--border);font-weight:600">STEP表示でリアルタイム把握</td></tr>
-              <tr><td style="padding:11px 16px;font-weight:600;color:var(--txt-2);border-bottom:1px solid var(--border)">異動・役職変更対応</td><td style="padding:11px 16px;text-align:center;color:var(--danger);background:var(--danger-lt);border-bottom:1px solid var(--border)">担当者任せで見落としが多発</td><td style="padding:11px 16px;text-align:center;color:var(--success);background:var(--success-lt);border-bottom:1px solid var(--border);font-weight:600">自動アラートで先回り・ゼロ漏れ</td></tr>
-              <tr><td style="padding:11px 16px;font-weight:600;color:var(--txt-2)">年間コスト（試算）</td><td style="padding:11px 16px;text-align:center;color:var(--danger);background:var(--danger-lt)">¥1,243,000</td><td style="padding:11px 16px;text-align:center;color:var(--success);background:var(--success-lt);font-weight:600">¥915,000（▼¥328,000 削減）</td></tr>
-            </tbody>
-          </table>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+              <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:8px">発注方法</div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:var(--danger-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--danger);font-weight:700;margin-bottom:3px">従来</div><div style="font-size:12px;font-weight:600;color:var(--danger)">メール・FAX・電話</div></div>
+                <div style="flex:1;background:var(--success-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--success);font-weight:700;margin-bottom:3px">Ly-Prum</div><div style="font-size:12px;font-weight:600;color:var(--success)">ワンストップ入力</div></div>
+              </div>
+            </div>
+            <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+              <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:8px">1件の処理時間</div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:var(--danger-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--danger);font-weight:700;margin-bottom:3px">従来</div><div style="font-size:16px;font-weight:800;color:var(--danger)">45分</div></div>
+                <div style="flex:1;background:var(--success-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--success);font-weight:700;margin-bottom:3px">Ly-Prum</div><div style="font-size:16px;font-weight:800;color:var(--success)">8分</div></div>
+              </div>
+            </div>
+            <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+              <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:8px">進捗確認</div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:var(--danger-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--danger);font-weight:700;margin-bottom:3px">従来</div><div style="font-size:12px;font-weight:600;color:var(--danger)">電話・メールで都度確認</div></div>
+                <div style="flex:1;background:var(--success-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--success);font-weight:700;margin-bottom:3px">Ly-Prum</div><div style="font-size:12px;font-weight:600;color:var(--success)">STEP表示でリアルタイム</div></div>
+              </div>
+            </div>
+            <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+              <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:8px">異動・役職変更対応</div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:var(--danger-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--danger);font-weight:700;margin-bottom:3px">従来</div><div style="font-size:12px;font-weight:600;color:var(--danger)">担当者任せで見落とし多発</div></div>
+                <div style="flex:1;background:var(--success-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--success);font-weight:700;margin-bottom:3px">Ly-Prum</div><div style="font-size:12px;font-weight:600;color:var(--success)">自動アラートでゼロ漏れ</div></div>
+              </div>
+            </div>
+            <div style="padding:12px 14px">
+              <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:8px">年間コスト（試算）</div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:var(--danger-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--danger);font-weight:700;margin-bottom:3px">従来</div><div style="font-size:16px;font-weight:800;color:var(--danger)">¥1,243,000</div></div>
+                <div style="flex:1;background:var(--success-lt);border-radius:8px;padding:8px 10px;text-align:center"><div style="font-size:10px;color:var(--success);font-weight:700;margin-bottom:3px">Ly-Prum</div><div style="font-size:14px;font-weight:800;color:var(--success)">¥915,000<br><span style="font-size:11px">▼¥328,000削減</span></div></div>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
 
         <!-- なぜLy-Prumか -->
         <div class="prop-h">なぜLy-Prumなのか</div>
         <div class="prop-sub">開発の手前で、最も重要な「何を作るか」「なぜ作るか」を整理します</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px">
+        <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:28px">
           <div class="card" style="border-top:3px solid var(--primary);text-align:center;padding:28px 20px">
             <div style="font-size:32px;color:var(--primary);margin-bottom:14px"><i class="fas fa-brain"></i></div>
             <div style="font-weight:800;font-size:14px;margin-bottom:10px;color:var(--txt-1)">PMO経験に基づく現場視点</div>
@@ -1928,17 +1919,57 @@
             </div>
             <div class="card">
               <div class="card-h"><i class="fas fa-chart-pie" style="color:var(--primary)"></i> 部署別コスト分析</div>
-              <div class="card-b" style="padding:0">
-                <table style="width:100%;font-size:12px;border-collapse:collapse">
-                  <thead><tr style="background:var(--bg)"><th style="padding:8px 12px;text-align:left;color:var(--txt-2);border-bottom:1px solid var(--border)">部署</th><th style="padding:8px 12px;text-align:right;color:var(--txt-2);border-bottom:1px solid var(--border)">件数</th><th style="padding:8px 12px;text-align:right;color:var(--txt-2);border-bottom:1px solid var(--border)">コスト</th><th style="padding:8px 12px;text-align:right;color:var(--txt-2);border-bottom:1px solid var(--border)">構成比</th></tr></thead>
-                  <tbody>
-                    <tr><td style="padding:8px 12px;font-weight:600">営業部</td><td style="padding:8px 12px;text-align:right;color:var(--txt-2)">18件</td><td style="padding:8px 12px;text-align:right;font-weight:700">¥534,000</td><td style="padding:8px 12px;text-align:right"><div style="background:var(--border);border-radius:4px;height:6px;width:80px;display:inline-block"><div style="background:var(--primary);height:6px;border-radius:4px;width:43%"></div></div></td></tr>
-                    <tr style="background:var(--bg)"><td style="padding:8px 12px;font-weight:600">開発部</td><td style="padding:8px 12px;text-align:right;color:var(--txt-2)">9件</td><td style="padding:8px 12px;text-align:right;font-weight:700">¥298,000</td><td style="padding:8px 12px;text-align:right"><div style="background:var(--border);border-radius:4px;height:6px;width:80px;display:inline-block"><div style="background:var(--accent);height:6px;border-radius:4px;width:24%"></div></div></td></tr>
-                    <tr><td style="padding:8px 12px;font-weight:600">総務部</td><td style="padding:8px 12px;text-align:right;color:var(--txt-2)">8件</td><td style="padding:8px 12px;text-align:right;font-weight:700">¥221,000</td><td style="padding:8px 12px;text-align:right"><div style="background:var(--border);border-radius:4px;height:6px;width:80px;display:inline-block"><div style="background:var(--purple);height:6px;border-radius:4px;width:18%"></div></div></td></tr>
-                    <tr style="background:var(--bg)"><td style="padding:8px 12px;font-weight:600">経理部</td><td style="padding:8px 12px;text-align:right;color:var(--txt-2)">4件</td><td style="padding:8px 12px;text-align:right;font-weight:700">¥112,000</td><td style="padding:8px 12px;text-align:right"><div style="background:var(--border);border-radius:4px;height:6px;width:80px;display:inline-block"><div style="background:var(--teal);height:6px;border-radius:4px;width:9%"></div></div></td></tr>
-                    <tr><td style="padding:8px 12px;font-weight:600">人事部</td><td style="padding:8px 12px;text-align:right;color:var(--txt-2)">3件</td><td style="padding:8px 12px;text-align:right;font-weight:700">¥78,000</td><td style="padding:8px 12px;text-align:right"><div style="background:var(--border);border-radius:4px;height:6px;width:80px;display:inline-block"><div style="background:var(--warning);height:6px;border-radius:4px;width:6%"></div></div></td></tr>
-                  </tbody>
-                </table>
+              <div style="display:flex;flex-direction:column;gap:0">
+                <div style="padding:10px 14px;border-bottom:1px solid var(--border)">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:700;font-size:13px">営業部</span>
+                    <span style="font-weight:800;font-size:14px;color:var(--primary)">¥534,000</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div style="flex:1;background:var(--border);border-radius:4px;height:6px"><div style="background:var(--primary);height:6px;border-radius:4px;width:43%"></div></div>
+                    <span style="font-size:11px;color:var(--txt-3);min-width:28px">18件</span>
+                  </div>
+                </div>
+                <div style="padding:10px 14px;border-bottom:1px solid var(--border)">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:700;font-size:13px">開発部</span>
+                    <span style="font-weight:800;font-size:14px;color:var(--accent)">¥298,000</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div style="flex:1;background:var(--border);border-radius:4px;height:6px"><div style="background:var(--accent);height:6px;border-radius:4px;width:24%"></div></div>
+                    <span style="font-size:11px;color:var(--txt-3);min-width:28px">9件</span>
+                  </div>
+                </div>
+                <div style="padding:10px 14px;border-bottom:1px solid var(--border)">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:700;font-size:13px">総務部</span>
+                    <span style="font-weight:800;font-size:14px;color:var(--purple)">¥221,000</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div style="flex:1;background:var(--border);border-radius:4px;height:6px"><div style="background:var(--purple);height:6px;border-radius:4px;width:18%"></div></div>
+                    <span style="font-size:11px;color:var(--txt-3);min-width:28px">8件</span>
+                  </div>
+                </div>
+                <div style="padding:10px 14px;border-bottom:1px solid var(--border)">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:700;font-size:13px">経理部</span>
+                    <span style="font-weight:800;font-size:14px;color:var(--teal)">¥112,000</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div style="flex:1;background:var(--border);border-radius:4px;height:6px"><div style="background:var(--teal);height:6px;border-radius:4px;width:9%"></div></div>
+                    <span style="font-size:11px;color:var(--txt-3);min-width:28px">4件</span>
+                  </div>
+                </div>
+                <div style="padding:10px 14px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:700;font-size:13px">人事部</span>
+                    <span style="font-weight:800;font-size:14px;color:var(--warning)">¥78,000</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div style="flex:1;background:var(--border);border-radius:4px;height:6px"><div style="background:var(--warning);height:6px;border-radius:4px;width:6%"></div></div>
+                    <span style="font-size:11px;color:var(--txt-3);min-width:28px">3件</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2040,15 +2071,31 @@
           <div>
             <div class="card" style="margin-bottom:16px">
               <div class="card-h"><i class="fas fa-users" style="color:var(--primary)"></i> 営業担当別実績</div>
-              <div class="card-b" style="padding:0">
-                <table style="width:100%;font-size:13px;border-collapse:collapse">
-                  <thead><tr style="background:var(--bg)"><th style="padding:8px 12px;text-align:left;color:var(--txt-2);border-bottom:1px solid var(--border)">担当者</th><th style="padding:8px 12px;text-align:center;color:var(--txt-2);border-bottom:1px solid var(--border)">担当</th><th style="padding:8px 12px;text-align:center;color:var(--txt-2);border-bottom:1px solid var(--border)">今月</th><th style="padding:8px 12px;text-align:right;color:var(--txt-2);border-bottom:1px solid var(--border)">売上見込み</th></tr></thead>
-                  <tbody>
-                    <tr><td style="padding:9px 12px;font-weight:700">高橋 隆</td><td style="padding:9px 12px;text-align:center;color:var(--txt-2)">2社</td><td style="padding:9px 12px;text-align:center"><span style="background:var(--primary-50);color:var(--primary);font-weight:700;padding:2px 8px;border-radius:20px;font-size:12px">8件</span></td><td style="padding:9px 12px;text-align:right;font-weight:700">¥1,450,000</td></tr>
-                    <tr style="background:var(--bg)"><td style="padding:9px 12px;font-weight:700">田村 直子</td><td style="padding:9px 12px;text-align:center;color:var(--txt-2)">2社</td><td style="padding:9px 12px;text-align:center"><span style="background:var(--primary-50);color:var(--primary);font-weight:700;padding:2px 8px;border-radius:20px;font-size:12px">5件</span></td><td style="padding:9px 12px;text-align:right;font-weight:700">¥550,000</td></tr>
-                    <tr><td style="padding:9px 12px;font-weight:700">山本 健</td><td style="padding:9px 12px;text-align:center;color:var(--txt-2)">1社</td><td style="padding:9px 12px;text-align:center"><span style="background:var(--primary-50);color:var(--primary);font-weight:700;padding:2px 8px;border-radius:20px;font-size:12px">2件</span></td><td style="padding:9px 12px;text-align:right;font-weight:700">¥380,000</td></tr>
-                  </tbody>
-                </table>
+              <div style="display:flex;flex-direction:column;gap:0">
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--border)">
+                  <div class="av" style="width:36px;height:36px;font-size:14px;flex-shrink:0;background:#1565C0">高</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-weight:700;font-size:13px">高橋 隆</div>
+                    <div style="font-size:11px;color:var(--txt-3);margin-top:2px">担当 2社 / 今月 <span style="color:var(--primary);font-weight:700">8件</span></div>
+                  </div>
+                  <div style="font-weight:800;font-size:14px;color:var(--primary)">¥145万</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--border);background:var(--bg)">
+                  <div class="av" style="width:36px;height:36px;font-size:14px;flex-shrink:0;background:#6A1B9A">田</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-weight:700;font-size:13px">田村 直子</div>
+                    <div style="font-size:11px;color:var(--txt-3);margin-top:2px">担当 2社 / 今月 <span style="color:var(--primary);font-weight:700">5件</span></div>
+                  </div>
+                  <div style="font-weight:800;font-size:14px;color:var(--primary)">¥55万</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 14px">
+                  <div class="av" style="width:36px;height:36px;font-size:14px;flex-shrink:0;background:#00695C">山</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-weight:700;font-size:13px">山本 健</div>
+                    <div style="font-size:11px;color:var(--txt-3);margin-top:2px">担当 1社 / 今月 <span style="color:var(--primary);font-weight:700">2件</span></div>
+                  </div>
+                  <div style="font-weight:800;font-size:14px;color:var(--primary)">¥38万</div>
+                </div>
               </div>
             </div>
             <div class="card">
@@ -2075,31 +2122,29 @@
         </div>
         <div class="card">
           <div class="card-h"><i class="fas fa-exchange-alt" style="color:var(--primary)"></i> Ly-Prum 導入ビフォーアフター（Growth Link 社内効率）</div>
-          <div class="card-b">
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-              <div style="text-align:center">
-                <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:12px">受注からデータ入手まで</div>
-                <div style="display:flex;align-items:center;justify-content:center;gap:16px">
-                  <div style="background:var(--danger-lt);border-radius:var(--r-sm);padding:12px 16px"><div style="font-size:20px;font-weight:800;color:var(--danger)">平均3日</div><div style="font-size:10px;color:var(--txt-3)">導入前</div></div>
-                  <i class="fas fa-arrow-right" style="color:var(--success);font-size:18px"></i>
-                  <div style="background:var(--success-lt);border-radius:var(--r-sm);padding:12px 16px"><div style="font-size:20px;font-weight:800;color:var(--success)">当日〜翌日</div><div style="font-size:10px;color:var(--txt-3)">導入後</div></div>
-                </div>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+              <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:8px">受注からデータ入手まで</div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="flex:1;background:var(--danger-lt);border-radius:var(--r-sm);padding:10px;text-align:center"><div style="font-size:17px;font-weight:800;color:var(--danger)">平均3日</div><div style="font-size:10px;color:var(--txt-3)">導入前</div></div>
+                <i class="fas fa-arrow-right" style="color:var(--success);font-size:16px;flex-shrink:0"></i>
+                <div style="flex:1;background:var(--success-lt);border-radius:var(--r-sm);padding:10px;text-align:center"><div style="font-size:17px;font-weight:800;color:var(--success)">当日〜翌日</div><div style="font-size:10px;color:var(--txt-3)">導入後</div></div>
               </div>
-              <div style="text-align:center">
-                <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:12px">修正・データ差し戻し率</div>
-                <div style="display:flex;align-items:center;justify-content:center;gap:16px">
-                  <div style="background:var(--danger-lt);border-radius:var(--r-sm);padding:12px 16px"><div style="font-size:20px;font-weight:800;color:var(--danger)">23%</div><div style="font-size:10px;color:var(--txt-3)">導入前</div></div>
-                  <i class="fas fa-arrow-right" style="color:var(--success);font-size:18px"></i>
-                  <div style="background:var(--success-lt);border-radius:var(--r-sm);padding:12px 16px"><div style="font-size:20px;font-weight:800;color:var(--success)">3%</div><div style="font-size:10px;color:var(--txt-3)">導入後</div></div>
-                </div>
+            </div>
+            <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+              <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:8px">修正・データ差し戻し率</div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="flex:1;background:var(--danger-lt);border-radius:var(--r-sm);padding:10px;text-align:center"><div style="font-size:17px;font-weight:800;color:var(--danger)">23%</div><div style="font-size:10px;color:var(--txt-3)">導入前</div></div>
+                <i class="fas fa-arrow-right" style="color:var(--success);font-size:16px;flex-shrink:0"></i>
+                <div style="flex:1;background:var(--success-lt);border-radius:var(--r-sm);padding:10px;text-align:center"><div style="font-size:17px;font-weight:800;color:var(--success)">3%</div><div style="font-size:10px;color:var(--txt-3)">導入後</div></div>
               </div>
-              <div style="text-align:center">
-                <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:12px">顧客からの月間問合せ件数</div>
-                <div style="display:flex;align-items:center;justify-content:center;gap:16px">
-                  <div style="background:var(--danger-lt);border-radius:var(--r-sm);padding:12px 16px"><div style="font-size:20px;font-weight:800;color:var(--danger)">47件</div><div style="font-size:10px;color:var(--txt-3)">導入前</div></div>
-                  <i class="fas fa-arrow-right" style="color:var(--success);font-size:18px"></i>
-                  <div style="background:var(--success-lt);border-radius:var(--r-sm);padding:12px 16px"><div style="font-size:20px;font-weight:800;color:var(--success)">8件</div><div style="font-size:10px;color:var(--txt-3)">導入後</div></div>
-                </div>
+            </div>
+            <div style="padding:12px 14px">
+              <div style="font-size:12px;font-weight:700;color:var(--txt-2);margin-bottom:8px">顧客からの月間問合せ件数</div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="flex:1;background:var(--danger-lt);border-radius:var(--r-sm);padding:10px;text-align:center"><div style="font-size:17px;font-weight:800;color:var(--danger)">47件</div><div style="font-size:10px;color:var(--txt-3)">導入前</div></div>
+                <i class="fas fa-arrow-right" style="color:var(--success);font-size:16px;flex-shrink:0"></i>
+                <div style="flex:1;background:var(--success-lt);border-radius:var(--r-sm);padding:10px;text-align:center"><div style="font-size:17px;font-weight:800;color:var(--success)">8件</div><div style="font-size:10px;color:var(--txt-3)">導入後</div></div>
               </div>
             </div>
           </div>
@@ -2580,43 +2625,32 @@
 
             <!-- KPIカード4枚 -->
             <div class="roi-kpi-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div class="card" style="text-align:center;border-top:3px solid var(--success);padding:16px">
-                <div style="font-size:11px;color:var(--txt-2);margin-bottom:6px;font-weight:600">年間削減工数</div>
-                <div id="roi-r-time" style="font-size:30px;font-weight:800;color:var(--success);line-height:1.1">—</div>
-                <div style="font-size:11px;color:var(--txt-3);margin-top:2px">時間/年</div>
+              <div class="card" style="text-align:center;border-top:3px solid var(--success);padding:14px 10px">
+                <div style="font-size:10px;color:var(--txt-2);margin-bottom:4px;font-weight:700">削減工数</div>
+                <div id="roi-r-time" style="font-size:26px;font-weight:800;color:var(--success);line-height:1.1">—</div>
+                <div style="font-size:10px;color:var(--txt-3);margin-top:2px">時間/年</div>
               </div>
-              <div class="card" style="text-align:center;border-top:3px solid var(--primary);padding:16px">
-                <div style="font-size:11px;color:var(--txt-2);margin-bottom:6px;font-weight:600">年間削減コスト（純利益）</div>
-                <div id="roi-r-cost" style="font-size:30px;font-weight:800;color:var(--primary);line-height:1.1">—</div>
-                <div style="font-size:11px;color:var(--txt-3);margin-top:2px">万円/年</div>
+              <div class="card" style="text-align:center;border-top:3px solid var(--primary);padding:14px 10px">
+                <div style="font-size:10px;color:var(--txt-2);margin-bottom:4px;font-weight:700">純削減コスト</div>
+                <div id="roi-r-cost" style="font-size:26px;font-weight:800;color:var(--primary);line-height:1.1">—</div>
+                <div style="font-size:10px;color:var(--txt-3);margin-top:2px">万円/年</div>
               </div>
-              <div class="card" style="text-align:center;border-top:3px solid var(--accent);padding:16px">
-                <div style="font-size:11px;color:var(--txt-2);margin-bottom:6px;font-weight:600">投資回収期間</div>
-                <div id="roi-r-payback" style="font-size:30px;font-weight:800;color:var(--accent);line-height:1.1">—</div>
-                <div style="font-size:11px;color:var(--txt-3);margin-top:2px">ヶ月</div>
+              <div class="card" style="text-align:center;border-top:3px solid var(--accent);padding:14px 10px">
+                <div style="font-size:10px;color:var(--txt-2);margin-bottom:4px;font-weight:700">回収期間</div>
+                <div id="roi-r-payback" style="font-size:26px;font-weight:800;color:var(--accent);line-height:1.1">—</div>
+                <div style="font-size:10px;color:var(--txt-3);margin-top:2px">ヶ月</div>
               </div>
-              <div class="card" style="text-align:center;border-top:3px solid var(--purple);padding:16px">
-                <div style="font-size:11px;color:var(--txt-2);margin-bottom:6px;font-weight:600">ROI</div>
-                <div id="roi-r-roi" style="font-size:30px;font-weight:800;color:var(--purple);line-height:1.1">—</div>
-                <div style="font-size:11px;color:var(--txt-3);margin-top:2px">%</div>
+              <div class="card" style="text-align:center;border-top:3px solid var(--purple);padding:14px 10px">
+                <div style="font-size:10px;color:var(--txt-2);margin-bottom:4px;font-weight:700">ROI</div>
+                <div id="roi-r-roi" style="font-size:26px;font-weight:800;color:var(--purple);line-height:1.1">—</div>
+                <div style="font-size:10px;color:var(--txt-3);margin-top:2px">%</div>
               </div>
             </div>
 
             <!-- 比較表 -->
             <div class="card">
               <div class="card-h"><i class="fas fa-balance-scale" style="color:var(--accent)"></i> 従来 vs Ly-Prum 比較</div>
-              <div class="card-b" style="padding:0">
-                <table style="width:100%;font-size:13px;border-collapse:collapse">
-                  <thead>
-                    <tr style="background:var(--bg)">
-                      <th style="padding:9px 12px;text-align:left;font-weight:600;color:var(--txt-2);border-bottom:2px solid var(--border)">項目</th>
-                      <th style="padding:9px 12px;text-align:center;font-weight:600;color:var(--danger);border-bottom:2px solid var(--border)">現状</th>
-                      <th style="padding:9px 12px;text-align:center;font-weight:600;color:var(--success);border-bottom:2px solid var(--border)">Ly-Prum</th>
-                    </tr>
-                  </thead>
-                  <tbody id="roi-cmp-body"></tbody>
-                </table>
-              </div>
+              <div id="roi-cmp-body"></div>
             </div>
 
             <!-- 前提条件注記 -->
@@ -3028,88 +3062,53 @@ function renderSteps(containerId, current, roundType) {
 }
 function renderDashSteps(cur) { renderSteps('dashSteps', cur); }
 
-// ══ DASHBOARD TABLE ══
+// ══ DASHBOARD CARDS ══
 function renderDashTable() {
   const src = (role === 'staff' && currentUser && currentUser.empId)
     ? orders.filter(o => o.empId === currentUser.empId)
     : orders;
   const r4 = src.slice(0,5);
-  const isMob = window.innerWidth < 600;
-  document.getElementById('dashTbody').innerHTML = r4.map(o => isMob ? `
-    <tr><td colspan="6" style="padding:0;border:none">
-      <div onclick="openDet('${o.id}')" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer">
-        <div class="av" style="background:${avColor(o.name)};width:36px;height:36px;font-size:14px;flex-shrink:0">${o.name[0]}</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-weight:700;font-size:13px;color:var(--txt-1)">${o.name}</div>
-          <div style="font-size:11px;color:var(--txt-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${o.dept} ${o.title} · ${o.created}</div>
-          <div style="display:flex;gap:6px;margin-top:5px;flex-wrap:wrap">${priBadge(o.pri)} ${stBadge(o.status)}</div>
-        </div>
-        <button class="btn btn-sm ${canAct(o)?'btn-primary':'btn-ghost'}" onclick="event.stopPropagation();openDet('${o.id}')" style="flex-shrink:0">${canAct(o)?'対応':'詳細'}</button>
+  document.getElementById('dashTbody').innerHTML = r4.map(o => `
+    <div onclick="openDet('${o.id}')" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer">
+      <div class="av" style="background:${avColor(o.name)};width:36px;height:36px;font-size:14px;flex-shrink:0">${o.name[0]}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-weight:700;font-size:13px;color:var(--txt-1)">${o.name}</div>
+        <div style="font-size:11px;color:var(--txt-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${o.dept} ${o.title} · ${o.created}</div>
+        <div style="display:flex;gap:6px;margin-top:5px;flex-wrap:wrap">${priBadge(o.pri)} ${stBadge(o.status)}</div>
       </div>
-    </td></tr>` : `
-    <tr onclick="openDet('${o.id}')">
-      <td><div class="flex aic g8"><div class="av" style="background:${avColor(o.name)}">${o.name[0]}</div>${o.name}</div></td>
-      <td><span class="fs12 text-2">${o.dept} ${o.title}</span></td>
-      <td>${o.created}</td>
-      <td>${priBadge(o.pri)}</td>
-      <td>${stBadge(o.status)}</td>
-      <td>
-        <div class="flex g8">
-          ${role==='staff'&&o.status===5 ? `<button class="btn btn-sm btn-success" onclick="event.stopPropagation();reorder('${o.id}')"><i class="fas fa-redo"></i> 再注文</button>` : ''}
-          <button class="btn btn-sm ${canAct(o)?'btn-primary':'btn-ghost'}" onclick="event.stopPropagation();openDet('${o.id}')">${canAct(o)?'対応する':'詳細'}</button>
-        </div>
-      </td>
-    </tr>`).join('');
+      <button class="btn btn-sm ${canAct(o)?'btn-primary':'btn-ghost'}" onclick="event.stopPropagation();openDet('${o.id}')" style="flex-shrink:0">${canAct(o)?'対応':'詳細'}</button>
+    </div>`).join('');
 }
 
-// ══ ORDERS TABLE ══
+// ══ ORDERS CARDS ══
 function renderOrdTable(data) {
   var base = (role === 'staff' && currentUser && currentUser.empId)
     ? orders.filter(o => o.empId === currentUser.empId)
     : orders;
   const rows = data !== undefined ? data : base;
-  const isMob = window.innerWidth < 600;
-  document.getElementById('ordTbody').innerHTML = rows.map(o => isMob ? `
-    <tr><td colspan="9" style="padding:0;border:none">
-      <div onclick="openDet('${o.id}')" style="padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;display:block;background:var(--white)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-          <code style="font-size:11px;background:var(--bg);padding:2px 8px;border-radius:4px;color:var(--txt-2);font-weight:700">${o.id}</code>
-          <div style="display:flex;gap:6px;align-items:center">${priBadge(o.pri)} ${stBadge(o.status)}</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-          <div class="av" style="background:${avColor(o.name)};width:36px;height:36px;font-size:14px;flex-shrink:0">${o.name[0]}</div>
-          <div style="min-width:0">
-            <div style="font-weight:700;font-size:14px;color:var(--txt-1)">${o.name}</div>
-            <div style="font-size:12px;color:var(--txt-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${o.dept} ${o.title}</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:12px;font-size:12px;color:var(--txt-3);flex-wrap:wrap;margin-bottom:10px">
-          <span><i class="fas fa-calendar-alt" style="margin-right:3px;color:var(--primary)"></i>${o.created}</span>
-          <span><i class="fas fa-id-card" style="margin-right:3px;color:var(--primary)"></i>${o.qty}枚</span>
-          <span class="rbadge ${o.round==='first'?'r-first':'r-rep'}" style="font-size:9px">${o.round==='first'?'初回':'2回目以降'}</span>
-        </div>
-        <div style="display:flex;justify-content:flex-end;gap:8px">
-          ${role==='staff'&&o.status===5 ? `<button class="btn btn-sm btn-success" onclick="event.stopPropagation();reorder('${o.id}')"><i class="fas fa-redo"></i> 再注文</button>` : ''}
-          <button class="btn btn-sm ${canAct(o)?'btn-primary':'btn-ghost'}" onclick="event.stopPropagation();openDet('${o.id}')">${canAct(o)?'対応する':'詳細'}</button>
+  document.getElementById('ordTbody').innerHTML = rows.map(o => `
+    <div onclick="openDet('${o.id}')" style="padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;background:var(--white)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <code style="font-size:11px;background:var(--bg);padding:2px 8px;border-radius:4px;color:var(--txt-2);font-weight:700">${o.id}</code>
+        <div style="display:flex;gap:6px;align-items:center">${priBadge(o.pri)} ${stBadge(o.status)}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <div class="av" style="background:${avColor(o.name)};width:36px;height:36px;font-size:14px;flex-shrink:0">${o.name[0]}</div>
+        <div style="min-width:0">
+          <div style="font-weight:700;font-size:14px;color:var(--txt-1)">${o.name}</div>
+          <div style="font-size:12px;color:var(--txt-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${o.dept} ${o.title}</div>
         </div>
       </div>
-    </td></tr>` : `
-    <tr onclick="openDet('${o.id}')">
-      <td><code style="font-size:11px;background:var(--bg);padding:2px 7px;border-radius:4px">${o.id}</code></td>
-      <td><div class="flex aic g8"><div class="av" style="background:${avColor(o.name)};width:26px;height:26px;font-size:10px">${o.name[0]}</div>${o.name}</div></td>
-      <td><span class="fs12 text-2">${o.dept} ${o.title}</span></td>
-      <td>${o.created}</td>
-      <td>${o.qty}枚</td>
-      <td>${priBadge(o.pri)}</td>
-      <td><span class="rbadge ${o.round==='first'?'r-first':'r-rep'}">${o.round==='first'?'初回':'2回目以降'}</span></td>
-      <td>${stBadge(o.status)}</td>
-      <td>
-        <div class="flex g8">
-          ${role==='staff'&&o.status===5 ? `<button class="btn btn-sm btn-success" onclick="event.stopPropagation();reorder('${o.id}')"><i class="fas fa-redo"></i> 再注文</button>` : ''}
-          <button class="btn btn-sm ${canAct(o)?'btn-primary':'btn-ghost'}" onclick="event.stopPropagation();openDet('${o.id}')">${canAct(o)?'対応する':'詳細'}</button>
-        </div>
-      </td>
-    </tr>`).join('');
+      <div style="display:flex;gap:12px;font-size:12px;color:var(--txt-3);flex-wrap:wrap;margin-bottom:10px">
+        <span><i class="fas fa-calendar-alt" style="margin-right:3px;color:var(--primary)"></i>${o.created}</span>
+        <span><i class="fas fa-id-card" style="margin-right:3px;color:var(--primary)"></i>${o.qty}枚</span>
+        <span class="rbadge ${o.round==='first'?'r-first':'r-rep'}" style="font-size:9px">${o.round==='first'?'初回':'2回目以降'}</span>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:8px">
+        ${role==='staff'&&o.status===5 ? `<button class="btn btn-sm btn-success" onclick="event.stopPropagation();reorder('${o.id}')"><i class="fas fa-redo"></i> 再注文</button>` : ''}
+        <button class="btn btn-sm ${canAct(o)?'btn-primary':'btn-ghost'}" onclick="event.stopPropagation();openDet('${o.id}')">${canAct(o)?'対応する':'詳細'}</button>
+      </div>
+    </div>`).join('');
 }
 
 function filterTbl() {
@@ -3756,36 +3755,49 @@ function renderProdDash() {
   var actTbody = document.getElementById('prodActTbody');
   if (!actTbody) return;
   if (!actOrders.length) {
-    actTbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:28px;color:var(--txt-3)"><i class="fas fa-check-circle" style="color:var(--success);font-size:18px;margin-bottom:8px;display:block"></i>現在対応が必要な案件はありません</td></tr>';
+    actTbody.innerHTML = '<div style="text-align:center;padding:28px;color:var(--txt-3)"><i class="fas fa-check-circle" style="color:var(--success);font-size:18px;margin-bottom:8px;display:block"></i>現在対応が必要な案件はありません</div>';
   } else {
     actTbody.innerHTML = actOrders.map(function(o){
       var stLbl = o.round==='repeat' ? '<span class="sbadge" style="background:#E8F5E9;color:#2E7D32;font-size:10px">再注文データ確認</span>' : '<span class="sbadge s2"><span class="dot"></span>制作中</span>';
-      return '<tr onclick="openDet(\''+o.id+'\')" style="cursor:pointer;background:'+(o.pri==='urgent'?'#FFF8E1':'')+'">'+
-        '<td><code style="font-size:11px;background:var(--bg);padding:2px 7px;border-radius:4px">'+o.id+'</code></td>'+
-        '<td><div class="flex aic g8"><div class="av" style="background:'+avColor(o.name)+';width:26px;height:26px;font-size:10px">'+o.name[0]+'</div>'+o.name+'</div></td>'+
-        '<td><span class="fs12 text-2">'+o.dept+' '+o.title+'</span></td>'+
-        '<td>'+o.created+'</td>'+
-        '<td>'+priBadge(o.pri)+'</td>'+
-        '<td><span class="rbadge '+(o.round==='first'?'r-first':'r-rep')+'">'+(o.round==='first'?'初回':'再注文')+'</span></td>'+
-        '<td>'+stLbl+'</td>'+
-        '<td><button class="btn btn-sm btn-primary" onclick="event.stopPropagation();openDet(\''+o.id+'\')"><i class="fas fa-bolt"></i> 対応する</button></td>'+
-        '</tr>';
+      return '<div onclick="openDet(\''+o.id+'\')" style="padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;background:'+(o.pri==='urgent'?'#FFF8E1':'var(--white)')+'">'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'+
+          '<code style="font-size:11px;background:var(--bg);padding:2px 8px;border-radius:4px;color:var(--txt-2);font-weight:700">'+o.id+'</code>'+
+          '<div style="display:flex;gap:6px;align-items:center">'+priBadge(o.pri)+' <span class="rbadge '+(o.round==='first'?'r-first':'r-rep')+'">'+(o.round==='first'?'初回':'再注文')+'</span></div>'+
+        '</div>'+
+        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">'+
+          '<div class="av" style="background:'+avColor(o.name)+';width:36px;height:36px;font-size:14px;flex-shrink:0">'+o.name[0]+'</div>'+
+          '<div style="min-width:0">'+
+            '<div style="font-weight:700;font-size:14px;color:var(--txt-1)">'+o.name+'</div>'+
+            '<div style="font-size:12px;color:var(--txt-2)">'+o.dept+' '+o.title+'</div>'+
+          '</div>'+
+        '</div>'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">'+
+          '<div style="display:flex;gap:8px;align-items:center;font-size:12px;color:var(--txt-3)">'+
+            '<span><i class="fas fa-calendar-alt" style="margin-right:3px;color:var(--primary)"></i>'+o.created+'</span>'+
+            stLbl+
+          '</div>'+
+          '<button class="btn btn-sm btn-primary" onclick="event.stopPropagation();openDet(\''+o.id+'\')"><i class="fas fa-bolt"></i> 対応する</button>'+
+        '</div>'+
+      '</div>';
     }).join('');
   }
   var doneTbody = document.getElementById('prodDoneTbody');
   if (!doneTbody) return;
   if (!doneOrders.length) {
-    doneTbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:16px;color:var(--txt-3)">完了案件はありません</td></tr>';
+    doneTbody.innerHTML = '<div style="text-align:center;padding:16px;color:var(--txt-3)">完了案件はありません</div>';
   } else {
     doneTbody.innerHTML = doneOrders.slice(0,5).map(function(o){
-      return '<tr onclick="openDet(\''+o.id+'\')" style="cursor:pointer;opacity:.75">'+
-        '<td><code style="font-size:11px;background:var(--bg);padding:2px 7px;border-radius:4px">'+o.id+'</code></td>'+
-        '<td>'+o.name+'</td>'+
-        '<td><span class="fs12 text-2">'+o.dept+' '+o.title+'</span></td>'+
-        '<td>'+o.created+'</td>'+
-        '<td><span class="rbadge '+(o.round==='first'?'r-first':'r-rep')+'">'+(o.round==='first'?'初回':'再注文')+'</span></td>'+
-        '<td>'+stBadge(o.status)+'</td>'+
-        '</tr>';
+      return '<div onclick="openDet(\''+o.id+'\')" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;opacity:.8">'+
+        '<div class="av" style="background:'+avColor(o.name)+';width:32px;height:32px;font-size:13px;flex-shrink:0">'+o.name[0]+'</div>'+
+        '<div style="flex:1;min-width:0">'+
+          '<div style="font-weight:700;font-size:13px;color:var(--txt-1)">'+o.name+'</div>'+
+          '<div style="font-size:11px;color:var(--txt-3)">'+o.dept+' '+o.title+' · '+o.created+'</div>'+
+          '<div style="display:flex;gap:6px;margin-top:4px">'+
+            '<span class="rbadge '+(o.round==='first'?'r-first':'r-rep')+'">'+(o.round==='first'?'初回':'再注文')+'</span>'+
+            stBadge(o.status)+
+          '</div>'+
+        '</div>'+
+      '</div>';
     }).join('');
   }
 }
@@ -4131,14 +4143,24 @@ function calcRoi() {
   document.getElementById('roi-cmp-body').innerHTML = rows.map(function(r, i) {
     var isTotal = r[3];
     var newCol = isTotal ? (saving >= 0 ? 'var(--success)' : 'var(--danger)') : 'var(--success)';
+    var newBg  = isTotal ? (saving >= 0 ? 'var(--success-lt)' : 'var(--danger-lt)') : 'var(--success-lt)';
     var savingTxt = isTotal ? (saving >= 0
-      ? ' <span style="font-size:11px;color:var(--success);margin-left:6px">▼ ¥'+fmt(saving)+' 削減</span>'
-      : ' <span style="font-size:11px;color:var(--danger);margin-left:6px">▲ ¥'+fmt(-saving)+' 増加</span>') : '';
-    return '<tr style="background:'+(i%2?'var(--bg)':'')+(isTotal?';font-weight:700;border-top:2px solid var(--border)':'')+'">'
-      + '<td style="padding:9px 12px;color:var(--txt-2)">' + r[0] + savingTxt + '</td>'
-      + '<td style="padding:9px 12px;text-align:center;color:var(--danger)">' + r[1] + '</td>'
-      + '<td style="padding:9px 12px;text-align:center;color:'+newCol+'">' + r[2] + '</td>'
-      + '</tr>';
+      ? '<div style="font-size:11px;color:var(--success);font-weight:800;margin-top:6px;text-align:center">▼ ¥'+fmt(saving)+' 削減</div>'
+      : '<div style="font-size:11px;color:var(--danger);font-weight:800;margin-top:6px;text-align:center">▲ ¥'+fmt(-saving)+' 増加</div>') : '';
+    return '<div style="padding:12px 14px;border-bottom:1px solid var(--border);background:'+(isTotal?'var(--bg)':'')+'">'
+      + '<div style="font-size:12px;color:var(--txt-2);font-weight:'+(isTotal?'700':'500')+';margin-bottom:8px">'+ r[0] +'</div>'
+      + '<div style="display:flex;gap:8px">'
+        + '<div style="flex:1;background:var(--danger-lt);border-radius:8px;padding:8px 10px;text-align:center">'
+          + '<div style="font-size:10px;color:var(--danger);font-weight:700;margin-bottom:3px">現状</div>'
+          + '<div style="font-size:14px;font-weight:700;color:var(--danger)">'+ r[1] +'</div>'
+        + '</div>'
+        + '<div style="flex:1;background:'+newBg+';border-radius:8px;padding:8px 10px;text-align:center">'
+          + '<div style="font-size:10px;color:'+newCol+';font-weight:700;margin-bottom:3px">Ly-Prum</div>'
+          + '<div style="font-size:14px;font-weight:700;color:'+newCol+'">'+ r[2] +'</div>'
+        + '</div>'
+      + '</div>'
+      + savingTxt
+      + '</div>';
   }).join('');
 }
 function exportRoiPdf() {
